@@ -1,0 +1,189 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, minimum-scale=1, minimal-ui" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <link type="image/x-icon" rel="shortcut icon" href="favicon.png" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+
+    <title>صندوق تنمية الموارد البشرية</title>
+
+
+    <!-- STYLE LIBRARIES -->
+    <link href="assets/libraries/owl-carousel/owl.carousel.min.css" type="text/css" rel="stylesheet" />
+    <!-- Boorstrap library -->
+    <link href="assets/libraries/bootstrap5.3.3/bootstrap.min.css" type="text/css" rel="stylesheet" />
+
+
+    <!-- PLUGINS STYLE-->
+    <!-- Off-Canvas Menu -->
+    <link href="assets/libraries/menu/offcanvas.css" type="text/css" rel="stylesheet" />
+
+
+    <!-- CUSTOM STYLLE -->
+    <!-- Reset style -->
+    <link href="assets/css/reset_en.css" type="text/css" rel="stylesheet" />
+    <!-- HRDF style -->
+    <link href="assets/css/hrdf_en.css" type="text/css" rel="stylesheet" />
+
+
+</head>
+<body>
+
+
+    <header class="header">
+
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <a class="navbar-brand text-white" href="#"><img src="assets/images/Logo_white.svg" alt="صندوق تنمية الموارد البشرية" /></a>
+
+                <div class="offcanvas offcanvas-start-lg" tabindex="-1" id="topmenu" aria-labelledby="topmenuLabel">
+                    <div class="offcanvas-header d-flex d-lg-none">
+                        <a href="#" class="offcanvas-title text-white" id="topmenuLabel"><img src="assets/images/Logo_white.svg" alt="صندوق تنمية الموارد البشرية" /></a>
+                        <a href="javascript:void(0) " class="offcanvas-close p-0" data-bs-dismiss="offcanvas" aria-label="close">
+                            <i class="gicon">close</i>
+                        </a>
+                    </div>
+                    <div class="offcanvas-body p-lg-0">
+                        <ul class="navbar-nav">
+                            <li class="mini-userprofile">
+                                <a href="#" class="userinfos">
+                                    <img src="uploads/user_avatar.png" alt="Talal AlOtaiqi" />
+                                    <div class="userinfo">
+                                        <label>Talal AlOtaiqi</label>
+                                        <span>t.otaiqi@hrdf.org.sa</span>
+                                    </div>
+                                    <i class="gicon size-20">navigate_before</i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">Events</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">Contacts</a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                    <div class="offcanvas-footer">
+                        <a href="#" class="logout-lnk">
+                            <i class="gicon">logout</i> Logout
+                        </a>
+                        <span class="mobile-copyrights">All copyrights reserved &copy; Humman Resources Development Fund</span>
+                    </div>
+
+                </div>
+                <div class="offcanvas-end">
+                    <a href="javascript:void(0)" class="menu-icon"><i class="gicon">notifications</i> <em class="notification-count">2</em></a>
+                    <a href="javascript:void(0)" class="menu-icon"><i class="gicon">calendar_month</i></a>
+                    <div class="dropdown topuserprofile">
+                        <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="uploads/user_avatar.png" alt="Talal AlOtaiqi" />
+                            <span>Talal AlOtaiqi</span>
+                            <i class="gicon size-16">expand_more</i>
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li>
+                                <div class="userinfos">
+                                    <img src="uploads/user_avatar.png" alt="Talal AlOtaiqi" />
+                                    <div class="userinfo">
+                                        <label>Talal AlOtaiqi</label>
+                                        <span>t.otaiqi@hrdf.org.sa</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="dm-lnk"><a class="dropdown-item" href="#">My Profile</a></li>
+                            <li class="dm-lnk"><a class="dropdown-item" href="#">Eligibility Logs</a></li>
+                            <li class="dm-lnk"><a class="dropdown-item" href="#">Reference</a></li>
+                            <li class="dm-lnk logout-lnk"><a class="dropdown-item" href="#"><i class="gicon">logout</i> Logout</a></li>
+                        </ul>
+                    </div>
+                    <button class="btn navbar-toggler border-3 px-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#topmenu" aria-controls="topmenu">
+                        <i class="gicon">menu</i>
+                    </button>
+                </div>
+
+            </div>
+        </nav>
+
+    </header>
+    <!---------------------------------------- /HEADER ---------------------------------------->
+    <!---------------------------------------- MAIN ---------------------------------------->
+    <main>
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#"><i class="gicon size-20">home_app_logo</i></a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Page Name</li>
+                </ol>
+            </nav>
+
+			PAGE CONTENT
+		</div>
+    </main>
+    <!---------------------------------------- /MAIN ---------------------------------------->
+    <!---------------------------------------- FOOTER ---------------------------------------->
+    <footer>
+        <div class="container">
+            <div class="footer-raw first-raw">
+                <ul class="footer-menu">
+                    <li class="footer-lnk">
+                        <a href="#">Privacy Policy</a>
+                    </li>
+                    <li class="footer-lnk">
+                        <a href="#">Terms of Use</a>
+                    </li>
+                    <li class="footer-lnk">
+                        <a href="#">FAQ</a>
+                    </li>
+                </ul>
+                <ul class="social-menu">
+                    <li class="social-lnk">
+                        <a href="#"><img src="assets/images/sclnk_fb.svg" alt="صندوق تنمية الموارد البشري" /></a>
+                    </li>
+                    <li class="social-lnk">
+                        <a href="#"><img src="assets/images/sclnk_tw.svg" alt="صندوق تنمية الموارد البشري" /></a>
+                    </li>
+                    <li class="social-lnk">
+                        <a href="#"><img src="assets/images/sclnk_li.svg" alt="صندوق تنمية الموارد البشري" /></a>
+                    </li>
+                    <li class="social-lnk">
+                        <a href="#"><img src="assets/images/sclnk_yt.svg" alt="صندوق تنمية الموارد البشري" /></a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="footer-raw second-raw">
+                <div class="footer-images">
+                    <img src="assets/images/ExtLogo_HRSD.svg" alt="وزارة الموارد البشرية" />
+                    <img src="assets/images/ExtLogo_DT.svg" alt="برنامج التحول الوطني 2020" />
+                    <img src="assets/images/ExtLogo_Vision2030.svg" alt="رؤية المملكة 2030" />
+                    <img src="assets/images/ExtLogo_NICE.svg" alt="مركز المعلومات الوطني" />
+                </div>
+                <div class="footer-copyright">
+                    All copyrights reserved &copy; Humman Resources Development Fund
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </footer>
+    <!---------------------------------------- /FOOTER ---------------------------------------->
+    <!-- SCRIPT LIBRARIES -->
+    <script src="assets/libraries/jquery3.7.1/jquery.min.js" type="text/javascript" charset="UTF-8"></script>
+    <script src="assets/js/popper.min.js" type="text/javascript" charset="UTF-8"></script>
+    <script src="assets/libraries/bootstrap5.3.3/bootstrap.min.js" type="text/javascript" charset="UTF-8"></script>
+    <script src="assets/libraries/owl-carousel/owl.carousel.min.js" type="text/javascript" charset="UTF-8"></script>
+
+    <!-- HRDF SCRIPT -->
+    <script src="assets/js/hrdf_en.js" type="text/javascript" charset="UTF-8"></script>
+</body>
+</html>

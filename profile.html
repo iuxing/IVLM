@@ -1,0 +1,1989 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, minimum-scale=1, minimal-ui" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <link type="image/x-icon" rel="shortcut icon" href="favicon.png" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+
+    <title>صندوق تنمية الموارد البشرية</title>
+
+
+    <!-- STYLE LIBRARIES -->
+    <!-- Boorstrap library -->
+    <link href="assets/libraries/bootstrap5.3.3/bootstrap.rtl.min.css" type="text/css" rel="stylesheet" />
+
+
+    <!-- PLUGINS STYLE-->
+    <!-- Off-Canvas Menu -->
+    <link href="assets/libraries/menu/offcanvas.css" type="text/css" rel="stylesheet" />
+    <link href="assets/libraries/select2/select2.min.css" type="text/css" rel="stylesheet" />
+    <link href="assets/libraries//datepicker/bootstrap-datetimepicker.min.css" type="text/css" rel="stylesheet" />
+    <link href="assets/libraries/map_leaflet/leaflet.css" type="text/css" rel="stylesheet" />
+    
+    <!-- CUSTOM STYLLE -->
+    <!-- Reset style -->
+    <link href="assets/css/reset.css" type="text/css" rel="stylesheet" />
+    <!-- HRDF style -->
+    <link href="assets/css/hrdf.css" type="text/css" rel="stylesheet" />
+
+
+
+</head>
+<body>
+
+
+
+
+    <header class="header">
+
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <a class="navbar-brand text-white" href="#"><img src="assets/images/Logo_white.svg" alt="صندوق تنمية الموارد البشرية" /></a>
+
+                <div class="offcanvas offcanvas-start-lg" tabindex="-1" id="topmenu" aria-labelledby="topmenuLabel">
+                    <div class="offcanvas-header d-flex d-lg-none">
+                        <a href="#" class="offcanvas-title text-white" id="topmenuLabel"><img src="assets/images/Logo_white.svg" alt="صندوق تنمية الموارد البشرية" /></a>
+                        <a href="javascript:void(0) " class="offcanvas-close p-0" data-bs-dismiss="offcanvas" aria-label="close">
+                            <i class="gicon">close</i>
+                        </a>
+                    </div>
+                    <div class="offcanvas-body p-lg-0">
+                        <ul class="navbar-nav">
+                            <li class="mini-userprofile">
+                                <a href="#" class="userinfos">
+                                    <img src="uploads/user_avatar.png" alt="طلال العتيقي" />
+                                    <div class="userinfo">
+                                        <label>طلال العتيقي</label>
+                                        <span>t.otaiqi@hrdf.org.sa</span>
+                                    </div>
+                                    <i class="gicon size-20">navigate_before</i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">الرئيسية</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">اللقاءات</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">إتصل بنا</a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                    <div class="offcanvas-footer">
+                        <a href="#" class="logout-lnk">
+                            <i class="gicon">logout</i> تسجيل الخروج
+                        </a>
+                        <span class="mobile-copyrights">جميع الحقوق محفوظة &copy; لصندوق تنمية الموارد البشرية</span>
+                    </div>
+
+                </div>
+                <div class="offcanvas-end">
+                    <a href="javascript:void(0)" class="menu-icon"><i class="gicon">notifications</i> <em class="notification-count">2</em></a>
+                    <a href="javascript:void(0)" class="menu-icon"><i class="gicon">calendar_month</i></a>
+                    <div class="dropdown topuserprofile">
+                        <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="uploads/user_avatar.png" alt="طلال العتيقي" />
+                            <span>طلال العتيقي</span>
+                            <i class="gicon size-16">expand_more</i>
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li>
+                                <div class="userinfos">
+                                    <img src="uploads/user_avatar.png" alt="طلال العتيقي" />
+                                    <div class="userinfo">
+                                        <label>طلال العتيقي</label>
+                                        <span>t.otaiqi@hrdf.org.sa</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="dm-lnk"><a class="dropdown-item" href="#">الملف الشخصي</a></li>
+                            <li class="dm-lnk"><a class="dropdown-item" href="#">سجل التحققات من الأهلية</a></li>
+                            <li class="dm-lnk"><a class="dropdown-item" href="#">التفضيلات</a></li>
+                            <li class="dm-lnk logout-lnk"><a class="dropdown-item" href="#"><i class="gicon">logout</i> تسجيل الخروج</a></li>
+                        </ul>
+                    </div>
+                    <button class="btn navbar-toggler border-3 px-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#topmenu" aria-controls="topmenu">
+                        <i class="gicon">menu</i>
+                    </button>
+                </div>
+
+            </div>
+        </nav>
+
+    </header>
+    <!---------------------------------------- /HEADER ---------------------------------------->
+    <!---------------------------------------- MAIN ---------------------------------------->
+    <main>
+
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#"><i class="gicon size-20">home_app_logo</i></a></li>
+                    <li class="breadcrumb-item active" aria-current="page">الملف الشخصي</li>
+                </ol>
+            </nav>
+
+
+
+            <div class="profile-header">
+                <div class="row profile-header-top">
+                    <div class="col-lg-8">
+                        <div class="profile-head-info">
+                            <img src="uploads/user_avatar.png" alt="طلال العتيقي" />
+                            <div class="profile-userinfos">
+                                <div class="profile-userinfo">
+                                    <h4>
+                                        طلال عبدالله سعود العتيقي
+
+                                    </h4>
+                                </div>
+                                <div class="profile-userids">
+                                    <span>رقم الملف: </span>
+                                    <em class="profID" id="profid">12434453221</em>
+                                    <button type="submit" onclick="CopyContent('profid')" title="نسخ الرقم"><i class="gicon size-20">content_copy</i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="profile-head-action">
+                            <span class="badge text-bg-success-light">الحساب فعال</span>
+                            <!--<button type="submit" class="btn btn-secondary"><i class="gicon">edit</i>تعديل الملف الشخصي</button>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-content">
+                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="pills-personal-tab" data-bs-toggle="pill" data-bs-target="#pills-personal" type="button" role="tab" aria-controls="pills-personal" aria-selected="true">البيانات الشخصية</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-experience-tab" data-bs-toggle="pill" data-bs-target="#pills-experience" type="button" role="tab" aria-controls="pills-experience" aria-selected="false">المؤهلات والخبرات</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-financial-tab" data-bs-toggle="pill" data-bs-target="#pills-financial" type="button" role="tab" aria-controls="pills-financial" aria-selected="false">المعلومات المالية</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-cv-tab" data-bs-toggle="pill" data-bs-target="#pills-cv" type="button" role="tab" aria-controls="pills-cv" aria-selected="false">السيرة الذاتية</button>
+                    </li>
+                </ul>
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-personal" role="tabpanel" aria-labelledby="pills-personal-tab" tabindex="0">
+
+                        <div class="tab-data">
+
+                            <div class="tab-header">
+                                <div class="col-lg-8 tab-title">
+                                    <h2>البيانات الشخصية</h2>
+                                </div>
+                                <div class="col-lg-4 tab-action">
+
+                                </div>
+                            </div>
+
+                            <div class="tab-body">
+                                <div class="col-lg-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <!-- Personal Info -->
+                                            <div class="row tab-subhead">
+                                                <div class="col-7 tab-subtitle">
+                                                    <h3>المعلومات الشخصية</h3>
+                                                </div>
+                                                <div class="col-5 tab-subaction"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-3 col-md-4 mb-3">
+                                                    <label class="form-label">الاسم الأول</label>
+                                                    <input type="text" class="form-control" placeholder="الاسم الأول" value="طلال" disabled>
+                                                </div>
+                                                <div class="col-lg-3 col-md-4 mb-3">
+                                                    <label class="form-label">اسم الأب</label>
+                                                    <input type="text" class="form-control" placeholder="اسم الأب" value="عبدالله" disabled>
+                                                </div>
+                                                <div class="col-lg-3 col-md-4 mb-3">
+                                                    <label class="form-label">اسم الجد</label>
+                                                    <input type="text" class="form-control" placeholder="اسم الجد" value="سعود" disabled>
+                                                </div>
+                                                <div class="col-lg-3 col-md-4 mb-3">
+                                                    <label class="form-label">اسم العائلة</label>
+                                                    <input type="text" class="form-control" placeholder="اسم العائلة" value="العتيقي" disabled>
+                                                </div>
+                                                <div class="col-lg-3 col-md-4 mb-3">
+                                                    <label class="form-label">الجنسية</label>
+                                                    <select class="form-control select2" name="state" disabled>
+                                                        <option value="SA" selected>المملكة العربية السعودية</option>
+                                                        <option value="OTHER">أخرى</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-lg-3 col-md-4 mb-3">
+                                                    <label class="form-label">رقم الهوية</label>
+                                                    <input type="text" class="form-control" placeholder="اسم العائلة" value="1002345678" disabled>
+                                                </div>
+                                                <div class="col-lg-3 col-md-4 mb-3">
+                                                    <label class="form-label">تاريخ الميلاد</label>
+                                                    <div class="form-group date" data-provide="datepicker">
+                                                        <input type="text" class="form-control" value="03/10/2001" disabled>
+                                                        <div class="input-group-addon">
+                                                            <!--<span class="gicon">calendar_month</span>-->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 col-md-4 mb-3">
+                                                    <label class="form-label">الجنس</label>
+                                                    <select class="form-select" disabled>
+                                                        <option>الرجاء التحديد</option>
+                                                        <option selected>ذكر</option>
+                                                        <option>أنثى</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-lg-3 col-md-4 mb-3">
+                                                    <label class="form-label">الحالة الإجتماعية</label>
+                                                    <div class="radio-group">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="MS_RG" id="MS01">
+                                                            <label class="form-check-label" for="MS01">
+                                                                متزوج
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="MS_RG" id="MS02" checked>
+                                                            <label class="form-check-label" for="MS02">
+                                                                أعزب
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 col-md-4 mb-3">
+                                                    <label class="form-label">هل لديك أبناء</label>
+                                                    <div class="radio-group">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="HK_RG" id="HK01">
+                                                            <label class="form-check-label" for="HK01">
+                                                                نعم
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="HK_RG" id="HK_RG02" checked>
+                                                            <label class="form-check-label" for="HK02">
+                                                                لا
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 col-md-4 mb-3">
+                                                    <label class="form-label">هل لديك رخصة قيادة</label>
+                                                    <div class="radio-group">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="DL_RG" id="DL01">
+                                                            <label class="form-check-label" for="DL02">
+                                                                نعم
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="DL_RG" id="DL02" checked>
+                                                            <label class="form-check-label" for="DL02">
+                                                                لا
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 col-md-4 mb-3">
+                                                    <label class="form-label">&nbsp;</label>
+                                                    <div class="checkbox-group">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                                            <label class="form-check-label" for="flexCheckDefault">
+                                                                لديك إتصال دائم بالإنترنت
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <!-- Account Settings -->
+                                            <div class="row tab-subhead extra-section">
+                                                <div class="col-7 tab-subtitle">
+                                                    <h3>إعدادات الحساب</h3>
+                                                </div>
+                                                <div class="col-5 tab-subaction"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-3 col-md-4 mb-3">
+                                                    <label class="form-label">رقم الملف الشخصي</label>
+                                                    <input type="number" class="form-control" placeholder="رقم الملف الشخصي" value="234567">
+                                                </div>
+                                                <div class="col-lg-3 col-md-4 mb-3">
+                                                    <label class="form-label">اسم المستخدم </label>
+                                                    <input type="text" class="form-control" placeholder="اسم المستخدم" value="t.otaibqi">
+                                                </div>
+                                                <div class="col-lg-3 col-md-4 mb-3">
+                                                    <label class="form-label">الرقم السري للرد الآلي</label>
+                                                    <div class="form-group">
+                                                        <input type="password" class="form-control" placeholder="الرقم السري للرد الآلي" value="1234">
+                                                        <a href="#" class="input-icon"><i class="gicon">visibility</i></a>
+                                                    </div>
+                                                    <span class="input-help"><a href="#">إعادة ضبط كلمة المرور</a></span>
+                                                </div>
+                                                <div class="col-lg-3 col-md-4 mb-3">
+                                                    <label class="form-label">لغة التواصل المفضلة</label>
+                                                    <select class="form-select">
+                                                        <option>الرجاء التحديد</option>
+                                                        <option>العربية</option>
+                                                        <option>الإنجليزية</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-lg-3 col-md-4 mb-3">
+                                                    <label class="form-label">التقويم المفضل</label>
+                                                    <select class="form-select">
+                                                        <option>الرجاء التحديد</option>
+                                                        <option>ميلادي</option>
+                                                        <option>هجري</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+
+                                            <!-- Passport Info -->
+                                            <div class="row tab-subhead extra-section">
+                                                <div class="col-7 tab-subtitle">
+                                                    <h3>معلومات جواز السفر</h3>
+                                                </div>
+                                                <div class="col-5 tab-subaction"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-3 col-md-4 mb-3">
+                                                    <label class="form-label">رقم جواز السفر</label>
+                                                    <input type="text" class="form-control" placeholder="رقم جواز السفر" value="R101010">
+                                                </div>
+                                                <div class="col-lg-3 col-md-4 mb-3">
+                                                    <label class="form-label">تاريخ إنتهاء جواز السفر</label>
+                                                    <div class="form-group date" data-provide="datepicker">
+                                                        <input type="text" class="form-control" placeholder="الرجاء تحديد التاريخ">
+                                                        <div class="input-group-addon">
+                                                            <span class="gicon">calendar_month</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <!-- Family Info -->
+                                            <div class="row tab-subhead extra-section">
+                                                <div class="col-7 tab-subtitle">
+                                                    <h3>بيانات أفراد أسرتك</h3>
+                                                </div>
+                                                <div class="col-5 tab-subaction">
+                                                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addFamily">إضافة فرد</button>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12 note note-info">
+                                                    <i class="gicon filled">info</i>
+                                                    <span>يمكنك تعبئة هذه البيانات فقط في حال اردت التسجيل في إعانة البحث عن عمل (حافز)</span>
+                                                </div>
+
+                                            </div>
+
+
+
+
+                                            <div class="row">
+
+                                                <table class="hrdf-table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>العلاقة الأسرية</th>
+                                                            <th>الجنسية</th>
+                                                            <th>رقم الهوية</th>
+                                                            <th>تاريخ الميلاد</th>
+                                                            <th>نوع العمل</th>
+                                                            <th style="width:100px">الإجراء</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td data-label="العلاقة الأسرية">زورجة</td>
+                                                            <td data-label="الجنسية">سعودية</td>
+                                                            <td data-label="رقم الهوية">1002345678</td>
+                                                            <td data-label="تاريخ الميلاد">10/03/2001</td>
+                                                            <td data-label="نوع العمل">ممرضة</td>
+                                                            <td data-label="الإجراء">
+                                                                <div class="dropdown tblaction">
+                                                                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                        <i class="gicon">more_horiz</i>
+                                                                    </a>
+
+                                                                    <ul class="dropdown-menu">
+                                                                        <li><a class="dropdown-item" href="#"><i class="gicon">visibility</i> التفاصيل</a></li>
+                                                                        <li><a class="dropdown-item" href="#"><i class="gicon">edit_note</i> تعديل</a></li>
+                                                                        <li><a class="dropdown-item text-danger" href="#"><i class="gicon">delete</i> حذف</a></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td data-label="العلاقة الأسرية">زورجة</td>
+                                                            <td data-label="الجنسية">سعودية</td>
+                                                            <td data-label="رقم الهوية">1002345678</td>
+                                                            <td data-label="تاريخ الميلاد">10/03/2001</td>
+                                                            <td data-label="نوع العمل">ممرضة</td>
+                                                            <td data-label="الإجراء">
+                                                                <div class="dropdown tblaction">
+                                                                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                        <i class="gicon">more_horiz</i>
+                                                                    </a>
+
+                                                                    <ul class="dropdown-menu">
+                                                                        <li><a class="dropdown-item" href="#"><i class="gicon">visibility</i> التفاصيل</a></li>
+                                                                        <li><a class="dropdown-item" href="#"><i class="gicon">edit_note</i> تعديل</a></li>
+                                                                        <li><a class="dropdown-item text-danger" href="#"><i class="gicon">delete</i> حذف</a></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td data-label="العلاقة الأسرية">زورجة</td>
+                                                            <td data-label="الجنسية">سعودية</td>
+                                                            <td data-label="رقم الهوية">1002345678</td>
+                                                            <td data-label="تاريخ الميلاد">10/03/2001</td>
+                                                            <td data-label="نوع العمل">ممرضة</td>
+                                                            <td data-label="الإجراء">
+                                                                <div class="dropdown tblaction">
+                                                                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                        <i class="gicon">more_horiz</i>
+                                                                    </a>
+
+                                                                    <ul class="dropdown-menu">
+                                                                        <li><a class="dropdown-item" href="#"><i class="gicon">visibility</i> التفاصيل</a></li>
+                                                                        <li><a class="dropdown-item" href="#"><i class="gicon">edit_note</i> تعديل</a></li>
+                                                                        <li><a class="dropdown-item text-danger" href="#"><i class="gicon">delete</i> حذف</a></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+                                            </div>
+
+
+                                            <!-- Contact Info -->
+                                            <div class="row tab-subhead extra-section">
+                                                <div class="col-7 tab-subtitle">
+                                                    <h3>معلومات الاتصال الأساسية</h3>
+                                                </div>
+                                                <div class="col-5 tab-subaction"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-3 col-md-4 mb-3">
+                                                    <label class="form-label">رقم الجوال</label>
+                                                    <div class="form-group">
+                                                        <input type="tel" class="form-control" placeholder="رقم الجوال">
+                                                        <span class="input-icon"><i class="gicon">smartphone</i></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 col-md-4 mb-3">
+                                                    <label class="form-label">البريد الإلكتروني</label>
+                                                    <div class="form-group">
+                                                        <input type="email" class="form-control" placeholder="البريد الإلكتروني">
+                                                        <span class="input-icon"><i class="gicon">mail</i></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 col-md-4 mb-3">
+                                                    <label class="form-label">رقم الهاتف</label>
+                                                    <div class="form-group">
+                                                        <input type="tel" class="form-control" placeholder="رقم الهاتف">
+                                                        <span class="input-icon"><i class="gicon">call</i></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 col-md-4 mb-3">
+                                                    <label class="form-label">رقم هاتف أحد الأقارب</label>
+                                                    <div class="form-group">
+                                                        <input type="tel" class="form-control" placeholder="رقم هاتف أحد الأقارب">
+                                                        <span class="input-icon"><i class="gicon">phone_in_talk</i></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 col-md-4 mb-3">
+                                                    <label class="form-label">رابط لينكدان</label>
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" placeholder="رابط لنكد إن">
+                                                        <span class="input-icon"><img src="assets/images/sm_linkedin.png" alt="" /></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 col-md-4 mb-3">
+                                                    <label class="form-label">رابط تويتر</label>
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" placeholder="رابط تويتر">
+                                                        <span class="input-icon"><img src="assets/images/sm_twitter.png" alt="" /></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 col-md-4 mb-3">
+                                                    <label class="form-label">رابط الفيس بوك</label>
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" placeholder="رابط فيس بوك">
+                                                        <span class="input-icon"><img src="assets/images/sm_facebook.png" alt="" /></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 col-md-4 mb-3">
+                                                    <label class="form-label">معلومات إضافية</label>
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" placeholder="معلومات إضافية">
+                                                        <span class="input-icon"><i class="gicon">info</i></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                            <!-- Location Info -->
+                                            <div class="row tab-subhead extra-section">
+                                                <div class="col-7 tab-subtitle">
+                                                    <h3>بيانات العنوان</h3>
+                                                </div>
+                                                <div class="col-5 tab-subaction"></div>
+                                            </div>
+                                            <div class="row note note-info">
+                                                <i class="gicon filled">info</i>
+                                                <span>في حالة عدم صحة البيانات الخاصة بالعنوان الوطني نرجو التوجه إلى <a href="#">منصة سبل</a> لتعديل البيانات الخاصة بالعنوان.</span>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-3 col-md-4 mb-3">
+                                                    <label class="form-label">الدولة</label>
+                                                    <input type="tel" class="form-control" value="السعودية" disabled>
+                                                </div>
+                                                <div class="col-lg-3 col-md-4 mb-3">
+                                                    <label class="form-label">المنطقة</label>
+                                                    <input type="tel" class="form-control" value="الرياض" disabled>
+                                                </div>
+                                                <div class="col-lg-3 col-md-4 mb-3">
+                                                    <label class="form-label">المدينة</label>
+                                                    <input type="tel" class="form-control" value="الرياض" disabled>
+                                                </div>
+                                                <div class="col-lg-3 col-md-4 mb-3">
+                                                    <label class="form-label">الحي</label>
+                                                    <input type="tel" class="form-control" value="الياسمين" disabled>
+                                                </div>
+                                                <div class="col-lg-3 col-md-4 mb-3">
+                                                    <label class="form-label">اسم الشارع</label>
+                                                    <input type="tel" class="form-control" value="أنس بن مالك" disabled>
+                                                </div>
+                                                <div class="col-lg-3 col-md-4 mb-3">
+                                                    <label class="form-label">رقم المبنى</label>
+                                                    <input type="tel" class="form-control" value="3857" disabled>
+                                                </div>
+                                                <div class="col-lg-3 col-md-4 mb-3">
+                                                    <label class="form-label">الرمز البريدي</label>
+                                                    <input type="tel" class="form-control" value="12468" disabled>
+                                                </div>
+                                                <div class="col-lg-3 col-md-4 mb-3">
+                                                    <label class="form-label">معلومات إضافية</label>
+                                                    <input type="tel" class="form-control" value="لايوجد" disabled>
+                                                </div>
+                                            </div>
+                                            <div class="row map-holder">
+                                                <div class="col-12">
+                                                    <span class="small-head">حدد الموقع من خلال الخريطة</span>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="map" id="map">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="pills-experience" role="tabpanel" aria-labelledby="pills-experience-tab" tabindex="0">
+                        <div class="tab-data">
+
+                            <div class="tab-header">
+                                <div class="col-lg-8 tab-title">
+                                    <h2>المؤهلات والخبرات</h2>
+                                </div>
+                                <div class="col-lg-4 tab-action">
+
+                                </div>
+                            </div>
+
+                            <div class="tab-body">
+                                <div class="col-lg-12">
+                                    <div class="card">
+                                        <div class="card-body">
+
+
+                                            <!-- EDUCATION INFO -->
+                                            <div class="row tab-subhead">
+                                                <div class="col-7 tab-subtitle">
+                                                    <h3>التعليم</h3>
+                                                </div>
+                                                <div class="col-5 tab-subaction">
+                                                    <button type="button" class="btn btn-primary btn-sm">إضافة تعليم</button>
+                                                    <button type="button" class="btn btn-secondary btn-sm">إستيراد البيانات</button>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+
+                                                <table class="hrdf-table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>المؤهل العملي<span>دولة التخرج</span></th>
+                                                            <th>تاريخ الإلتحاق<span>تاريخ التخرج</span></th>
+                                                            <th>التخصص العام<span>التخصص الدقيق</span></th>
+                                                            <th>نظام الدراسة<span>المعدل</span></th>
+
+                                                            <th style="width:100px">الإجراء</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td data-label="المؤهل العملي/دولة التخرج">بكالوريوس<span>المملكة العربية السعودية</span></td>
+                                                            <td data-label="تاريخ الإلتحاق/تاريخ التخرج">30 مارس، 2008<span>20 نوفمبر 2012</span></td>
+                                                            <td data-label="التخصص العام/التخصص الدقيق">هندسة مدني<span>طرق ومنشآت</span></td>
+                                                            <td data-label="نظام الدراسة/المعدل">تراكمي<span>3.45</span></td>
+
+                                                            <td data-label="الإجراء">
+                                                                <div class="dropdown tblaction">
+                                                                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                        <i class="gicon">more_horiz</i>
+                                                                    </a>
+
+                                                                    <ul class="dropdown-menu">
+                                                                        <li><a class="dropdown-item" href="#"><i class="gicon">visibility</i> التفاصيل</a></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>
+
+                                            </div>
+
+
+
+                                            <!-- EXPERIENCE INFO -->
+                                            <div class="row tab-subhead extra-section">
+                                                <div class="col-7 tab-subtitle">
+                                                    <h3>الخبرات العملية</h3>
+                                                </div>
+                                                <div class="col-5 tab-subaction">
+                                                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addExp">إضافة خبرة عملية</button>
+                                                    <button type="button" class="btn btn-secondary btn-sm">إستيراد البيانات</button>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+
+                                                <table class="hrdf-table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>المسمى حسب التأمينات<span>المسمى الوظيفي</span></th>
+                                                            <th>اسم المنشأة<span>مدة العمل</span></th>
+                                                            <th>تاريخ البداية<span>تاريخ النهاية</span></th>
+                                                            <th>اسم المرفق</th>
+                                                            <th style="width:100px">الإجراء</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td data-label="المسمى حسب التأمينات/المسمى الوظيفي">بكالوريوس<span>المملكة العربية السعودية</span></td>
+                                                            <td data-label="اسم المنشأة/مدة العمل">صندوق تنمية الموارد البشرية<span>موظف حتى الآن</span></td>
+                                                            <td data-label="تاريخ البداية/تاريخ النهاية">30 مارس، 2008<span>20 نوفمبر 2012</span></td>
+                                                            <td data-label="اسم المرفق"><a href="#">ExperienceCert.pdf</a></td>
+
+                                                            <td data-label="الإجراء">
+                                                                <div class="dropdown tblaction">
+                                                                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                        <i class="gicon">more_horiz</i>
+                                                                    </a>
+
+                                                                    <ul class="dropdown-menu">
+                                                                        <li><a class="dropdown-item" href="#"><i class="gicon">visibility</i> التفاصيل</a></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>
+
+                                            </div>
+
+
+
+                                            <!-- CERTIFICATES INFO -->
+                                            <div class="row tab-subhead extra-section">
+                                                <div class="col-7 tab-subtitle">
+                                                    <h3>الشهادات</h3>
+                                                </div>
+                                                <div class="col-5 tab-subaction">
+                                                    <button type="button" class="btn btn-primary btn-sm">إضافة شهادة</button>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+
+                                                <table class="hrdf-table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>اسم الشهادة</th>
+                                                            <th>اسم منشاة مصدر الشهادة</th>
+                                                            <th>تاريخ الإصدار</th>
+                                                            <th>نوع الشهادة</th>
+                                                            <th>اسم المرفق</th>
+                                                            <th style="width:100px">الإجراء</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td data-label="اسم الشهادة">التصميم الجرافيكي</td>
+                                                            <td data-label="اسم منشأة مصدر الشهادة">المركز السعودي للتدريب</td>
+                                                            <td data-label="تاريخ الإصدار">30 مارس، 2008</td>
+                                                            <td data-label="نوع الشهادة">شهادة إحترافية</td>
+                                                            <td data-label="اسم المرفق"><a href="#">GraphicCert.pdf</a></td>
+                                                            <td data-label="الإجراء">
+                                                                <div class="dropdown tblaction">
+                                                                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                        <i class="gicon">more_horiz</i>
+                                                                    </a>
+
+                                                                    <ul class="dropdown-menu">
+                                                                        <li><a class="dropdown-item" href="#"><i class="gicon">visibility</i> التفاصيل</a></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="pills-financial" role="tabpanel" aria-labelledby="pills-financial-tab" tabindex="0">
+                        <div class="tab-data">
+
+                            <div class="tab-header">
+                                <div class="col-lg-8 tab-title">
+                                    <h2>المعلومات المالية</h2>
+                                </div>
+                                <div class="col-lg-4 tab-action">
+
+                                </div>
+                            </div>
+
+                            <div class="tab-body">
+                                <div class="col-lg-12">
+                                    <div class="card">
+                                        <div class="card-body">
+
+
+                                            <!-- Bank INFO -->
+                                            <div class="row tab-subhead">
+                                                <div class="col-7 tab-subtitle">
+                                                    <h3>معلومات البنك</h3>
+                                                </div>
+                                                <div class="col-5 tab-subaction">
+
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-4 col-md-6 col-sm-9 mb-3">
+                                                    <label class="form-label">رقم الآيبان</label>
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control" placeholder="" value="SA12 0003 4319 8211 04932">
+
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-lg-4 col-md-6 col-sm-3 mb-3">
+                                                    <label class="form-label">&nbsp;</label>
+                                                    <button type="button" class="btn btn-primary btn-validate" onclick="showResult()">تحقق</button>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-12 pt-2">
+                                                    <div class="bank-results" id="bankresult" style="display:none">
+                                                        <div class="row">
+                                                            <div class="col-lg-3 col-md-4">
+                                                                <div class="bank-result">
+                                                                    <i class="gicon filled">account_balance</i>
+                                                                    <div class="bank-record">
+                                                                        <label>حالة الآيبان</label>
+                                                                        <span>صحيح <i class="gicon filled text-success">verified</i></span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-3 col-md-4">
+                                                                <div class="bank-result">
+                                                                    <i class="gicon filled">account_balance</i>
+                                                                    <div class="bank-record">
+                                                                        <label>اسم البنك</label>
+                                                                        <span>مصرف الراجحي</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <!-- Finanial Data-->
+
+                                            <div class="row tab-subhead extra-section">
+                                                <div class="col-lg-8 col-sm-8 tab-subtitle">
+                                                    <h3>معلومات الدخل السنوي</h3>
+                                                </div>
+                                                <div class="col-lg-4 col-sm-4 tab-subaction">
+
+                                                </div>
+                                            </div>
+                                            <div class="row note note-info">
+                                                <i class="gicon filled">info</i>
+                                                <span>يمكنك تعبئة هذه البيانات فقط في حال اردت التسجيل في إعانة البحث عن عمل (حافز).</span>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-4 mb-3">
+                                                    <label class="form-label">ايجار أي أصول ثابتة او منقولة</label>
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" value="">
+                                                        <div class="input-group-addon">
+                                                            <span>ر.س</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4 mb-3">
+                                                    <label class="form-label">نفقة بموجب امر قضائي او اتفاق</label>
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" value="">
+                                                        <div class="input-group-addon">
+                                                            <span>ر.س</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4 mb-3">
+                                                    <label class="form-label">مصادر دخل أخرى</label>
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" value="">
+                                                        <div class="input-group-addon">
+                                                            <span>ر.س</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4 mb-3">
+                                                    <label class="form-label">أرباح أسهم او حصص في أي نوع من أنواع المنشآت</label>
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" value="">
+                                                        <div class="input-group-addon">
+                                                            <span>ر.س</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4 mb-3">
+                                                    <label class="form-label">المبالغ الحكومية الأخرى</label>
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" value="">
+                                                        <div class="input-group-addon">
+                                                            <span>ر.س</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4 mb-3">
+                                                    <label class="form-label">المخصصات من التأمينات الاجتماعية او مؤسسة التقاعد</label>
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" value="">
+                                                        <div class="input-group-addon">
+                                                            <span>ر.س</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4 mb-3">
+                                                    <label class="form-label">المخصصات من الضمان الاجتماعي</label>
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" value="" disabled>
+                                                        <div class="input-group-addon">
+                                                            <span>ر.س</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4 mb-3">
+                                                    <label class="form-label">إجمالي الدخل السنوي</label>
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" value="" disabled>
+                                                        <div class="input-group-addon">
+                                                            <span>ر.س</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <!-- Properties Data -->
+                                            <div class="row tab-subhead extra-section">
+                                                <div class="col-7 tab-subtitle">
+                                                    <h3>النشاط التجاري والصكوك العقارية</h3>
+                                                </div>
+                                                <div class="col-5 tab-subaction">
+
+                                                </div>
+                                            </div>
+                                            <div class="row note note-info">
+                                                <i class="gicon filled">info</i>
+                                                <span>يمكنك تعبئة هذه البيانات فقط في حال اردت التسجيل في إعانة البحث عن عمل (حافز).</span>
+                                            </div>
+
+
+                                            <div class="row">
+                                                <div class="col-lg-12 mb-3">
+                                                    <label class="form-label">هل لديك نشاط تجاري</label>
+                                                    <span class="input-help">(يقصد التملك او الحصول على ترخيص لاي نشاط ويشمل من لديه دخل خاص)</span>
+                                                    <div class="radio-group">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="BizOwn" id="BizOwn01">
+                                                            <label class="form-check-label" for="BizOwn01">
+                                                                نعم
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="BizOwn" id="BizOwn02" checked>
+
+                                                            <label class="form-check-label" for="BizOwn02">
+                                                                لا
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-12 mb-3">
+                                                    <div class="checkbox-group">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value="" id="BizRules">
+                                                            <label class="form-check-label" for="BizRules">
+                                                                أقر بعدم ممارستي لاي نشاط تجاري
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-12 mb-3">
+                                                    <label cla ss="form-label">هل لديك صكوك عقارية؟</label>
+                                                    <div class="radio-group">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="PropOwn" value="yes" id="PropOwn01">
+                                                            <label class="form-check-label" for="PropOwn01">
+                                                                نعم
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="PropOwn" value="no" id="PropOwn02" checked>
+
+                                                            <label class="form-check-label" for="PropOwn02">
+                                                                لا
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row" id="propdetails" style="display:none;">
+                                                    <div class="col-lg-3 col-md-4 mb-3">
+                                                        <label class="form-label">رقم الصك العقاري <sup>*</sup></label>
+                                                        <input type="text" class="form-control" placeholder="الرجاء إدخال رقم الصك" value="">
+                                                    </div>
+                                                    <div class="col-lg-3 col-md-4 mb-3">
+                                                        <label class="form-label">تاريخ الصك العقاري <sup>*</sup></label>
+                                                        <div class="form-group date" data-provide="datepicker">
+                                                            <input type="text" class="form-control" placeholder="الرجاء التحديد">
+                                                            <div class="input-group-addon">
+                                                                <span class="gicon">calendar_month</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="pills-cv" role="tabpanel" aria-labelledby="pills-cv-tab" tabindex="0">
+                        <div class="tab-data">
+
+                            <div class="tab-header">
+                                <div class="col-lg-8 tab-title">
+                                    <h2>السيرة الذاتية</h2>
+                                </div>
+                                <div class="col-lg-4 tab-action">
+
+                                </div>
+                            </div>
+                            <div class="cv-tools">
+                                <div class="col-lg-12">
+                                    <div class="custom-list">
+                                        <div class="dropdown cv-lst">
+                                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <label>السيرة الذاتية 01</label>
+                                                <span class="badge text-bg-success-light">الأساسية</span>
+                                                <i class="gicon">expand_more</i>
+                                            </a>
+
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    <a class="dropdown-item" href="#">
+                                                        <label>السيرة الذاتية 01</label>
+                                                        <span class="badge text-bg-success-light">الأساسية</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">
+                                                        <label>السيرة الذاتية 02</label>
+
+                                                    </a>
+                                                </li>
+
+                                                <li><a class="dropdown-item add-cv" href="#"><i class="gicon">add</i> إضافة سيرة ذاتية</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="cv-tool">
+                                        <div class="switch-control">
+                                            <label id="setdefault" class="switch">
+                                                <input type="checkbox">
+                                                <span class="slider round"></span>
+                                            </label>
+                                            <span class="switch-label" for="setdefault">تعيين كأساسية</span>
+                                        </div>
+                                        <div class="dropdown">
+                                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="gicon">more_vert</i>
+                                            </a>
+
+                                            <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#Resume"><i class="gicon">download</i> تحميل</a></li>
+                                                <li><a class="dropdown-item" href="#"><i class="gicon">visibility</i> معاينة</a></li>
+                                                <li><a class="dropdown-item" href="#"><i class="gicon">text_select_start</i> إعادة تسمية</a></li>
+                                                <li><a class="dropdown-item text-danger" href="#"><i class="gicon">delete</i> حذف</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row tab-body">
+                                <div class="col-lg-12">
+                                    <div class="card">
+                                        <div class="card-body">
+
+
+                                            <!-- PERSONAL INFO -->
+                                            <div class="row tab-subhead">
+                                                <div class="col-7 tab-subtitle">
+                                                    <h3>المعلومات الشخصية</h3>
+                                                </div>
+                                                <div class="col-5 tab-subaction">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6 mb-3">
+                                                    <label class="form-label">نبذة عني <sup>*</sup></label>
+                                                    <div class="textarea-counter">
+                                                        <textarea class="form-control" rows="3"></textarea>
+                                                        <span class="counter">250/0</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 mb-3">
+                                                    <label class="form-label">الهدف الوظيفي <sup>*</sup></label>
+                                                    <div class="textarea-counter">
+                                                        <textarea class="form-control" rows="3"></textarea>
+                                                        <span class="counter">250/0</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+
+                                            <!-- EXPERIENCE INFO -->
+                                            <div class="row tab-subhead extra-section">
+                                                <div class="col-7 tab-subtitle">
+                                                    <h3>الخبرات العملية</h3>
+                                                </div>
+                                                <div class="col-5 tab-subaction">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+
+                                                <table class="hrdf-table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>المسمى حسب التأمينات<span>المسمى الوظيفي</span></th>
+                                                            <th>اسم المنشأة<span>مدة العمل</span></th>
+                                                            <th>تاريخ البداية<span>تاريخ النهاية</span></th>
+                                                            <th style="width:100px">الإجراء</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td data-label="المسمى حسب التأمينات/المسمى الوظيفي">بكالوريوس<span>المملكة العربية السعودية</span></td>
+                                                            <td data-label="اسم المنشأة/مدة العمل">صندوق تنمية الموارد البشرية<span>موظف حتى الآن</span></td>
+                                                            <td data-label="تاريخ البداية/تاريخ النهاية">30 مارس، 2008<span>20 نوفمبر 2012</span></td>
+
+                                                            <td data-label="الإجراء">
+                                                                <div class="dropdown tblaction">
+                                                                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                        <i class="gicon">more_horiz</i>
+                                                                    </a>
+
+                                                                    <ul class="dropdown-menu">
+                                                                        <li><a class="dropdown-item" href="#"><i class="gicon">visibility</i> التفاصيل</a></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>
+
+                                            </div>
+
+
+                                            <!-- EDUCATION INFO -->
+                                            <div class="row tab-subhead extra-section">
+                                                <div class="col-7 tab-subtitle">
+                                                    <h3>التعليم</h3>
+                                                </div>
+                                                <div class="col-5 tab-subaction">
+                                                    <button type="button" class="btn btn-secondary btn-sm">تحديث البيانات</button>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+
+                                                <table class="hrdf-table">
+                                                    <thead>
+                                                        <tr>
+                                                            <td style="width:40px;"><input class="form-check-input" type="checkbox" value=""></td>
+                                                            <th>المؤهل العملي</th>
+                                                            <th>الجامعة</th>
+                                                            <th>الكلية</th>
+                                                            <th>تاريخ الحصول عليه</th>
+                                                            <th>المعدل التراكمي</th>
+                                                            <th style="width:100px">الإجراء</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td data-label="تحديد"><input class="form-check-input" type="checkbox" value=""></td>
+                                                            <td data-label="المؤهل العلمي">بكالوريوس</td>
+                                                            <td data-label="الجامعة">جامعة الإمام محمد بن سعود</td>
+                                                            <td data-label="الكلية">علوم الحاسوب></td>
+                                                            <td data-label="تاريخ الحصول عليه">14/02/2018</td>
+                                                            <td data-label="المعدل التراكمي">3.45</td>
+                                                            <td data-label="الإجراء">
+                                                                <div class="dropdown tblaction">
+                                                                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                        <i class="gicon">more_horiz</i>
+                                                                    </a>
+
+                                                                    <ul class="dropdown-menu">
+                                                                        <li><a class="dropdown-item text-danger" href="#"><i class="gicon">delete</i> حدف</a></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>
+
+                                            </div>
+
+
+
+                                            <!-- Skills INFO -->
+                                            <div class="row tab-subhead extra-section">
+                                                <div class="col-7 tab-subtitle">
+                                                    <h3>المهارات</h3>
+                                                </div>
+                                                <div class="col-5 tab-subaction">
+                                                    <button type="button" class="btn btn-primary btn-sm">إضافة مهارة</button>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+
+                                                <table class="hrdf-table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>المهارة الشخصية</th>
+                                                            <th>الدورة الخاصة بالمهارة</th>
+                                                            <th style="width:100px">الإجراء</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td data-label="المهارة الشهصية">التصميم الجرافيكي بواسطة ادوبي</td>
+                                                            <td data-label="دورة المهارة">التصميم الإبداعي</td>
+                                                            <td data-label="الإجراء">
+                                                                <div class="dropdown tblaction">
+                                                                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                        <i class="gicon">more_horiz</i>
+                                                                    </a>
+
+                                                                    <ul class="dropdown-menu">
+                                                                        <li><a class="dropdown-item text-danger" href="#"><i class="gicon">delete</i> حدف</a></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>
+
+                                            </div>
+
+
+
+
+                                            <!-- Certificates INFO -->
+                                            <div class="row tab-subhead extra-section">
+                                                <div class="col-7 tab-subtitle">
+                                                    <h3>الشهادات</h3>
+                                                </div>
+                                                <div class="col-5 tab-subaction">
+                                                    <button type="button" class="btn btn-primary btn-sm">إضافة شهادة</button>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+
+                                                <table class="hrdf-table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>الشهادة</th>
+                                                            <th>جهة الإصدار</th>
+                                                            <th>تاريخ الإصدار</th>
+                                                            <th>نوع الشهادة</th>
+                                                            <th>المرفق</th>
+                                                            <th style="width:100px">الإجراء</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td data-label="الشهادة">التصميم الجرافيكي بواسطة ادوبي</td>
+                                                            <td data-label="جهة الإصدار">التصميم الإبداعي</td>
+                                                            <td data-label="تاريخ الإصدار">30/10/2021</td>
+                                                            <td data-label="نوع الشهادة">إحترافية</td>
+                                                            <td data-label="المرفق"><a href="#">Certif.pdf</a></td>
+                                                            <td data-label="الإجراء">
+                                                                <div class="dropdown tblaction">
+                                                                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                        <i class="gicon">more_horiz</i>
+                                                                    </a>
+
+                                                                    <ul class="dropdown-menu">
+                                                                        <li><a class="dropdown-item text-danger" href="#"><i class="gicon">delete</i> حدف</a></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>
+
+                                            </div>
+
+
+
+                                            <!-- Courses INFO -->
+                                            <div class="row tab-subhead extra-section">
+                                                <div class="col-7 tab-subtitle">
+                                                    <h3>الدورات التدريبية</h3>
+                                                </div>
+                                                <div class="col-5 tab-subaction">
+                                                    <button type="button" class="btn btn-primary btn-sm">إضافة دورة تدريبية</button>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+
+                                                <table class="hrdf-table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>الدورة الخاصة بالوظيفة</th>
+                                                            <th>الدورة الخاصة بمهاراتك</th>
+                                                            <th style="width:100px">الإجراء</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td data-label="الدورة الخاصة بالوظيفة">دورة التصميم العام</td>
+                                                            <td data-label="الدورة الخاصة بمهاراتك">التصميم الإبداعي بواسطة أدوبي</td>
+                                                            <td data-label="الإجراء">
+                                                                <div class="dropdown tblaction">
+                                                                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                        <i class="gicon">more_horiz</i>
+                                                                    </a>
+
+                                                                    <ul class="dropdown-menu">
+                                                                        <li><a class="dropdown-item text-danger" href="#"><i class="gicon">delete</i> حدف</a></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </main>
+    <div class="page-actions sticky" id="pageactions">
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <button class="btn btn-secondary discard" type="button" id="discard" style="display:none">إلغاء التعديلات</button>
+                    <span class="discard discard-txt text-danger" style="display:none">يوجد بعض التعديلات لم تحفظ بعد</span>
+                </div>
+                <div class="col-6 text-end">
+                    <button class="btn btn-primary" type="button">حفظ التعديلات</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!---------------------------------------- /MAIN ---------------------------------------->
+    <!---------------------------------------- FOOTER ---------------------------------------->
+    <footer>
+        <div class="container">
+            <div class="footer-raw first-raw">
+                <ul class="footer-menu">
+                    <li class="footer-lnk">
+                        <a href="#">سياسة الخصوصية</a>
+                    </li>
+                    <li class="footer-lnk">
+                        <a href="#">شروط الإستخدام</a>
+                    </li>
+                    <li class="footer-lnk">
+                        <a href="#">الأسئلة الشائعة</a>
+                    </li>
+                </ul>
+                <ul class="social-menu">
+                    <li class="social-lnk">
+                        <a href="#"><img src="assets/images/sclnk_fb.svg" alt="صندوق تنمية الموارد البشري" /></a>
+                    </li>
+                    <li class="social-lnk">
+                        <a href="#"><img src="assets/images/sclnk_tw.svg" alt="صندوق تنمية الموارد البشري" /></a>
+                    </li>
+                    <li class="social-lnk">
+                        <a href="#"><img src="assets/images/sclnk_li.svg" alt="صندوق تنمية الموارد البشري" /></a>
+                    </li>
+                    <li class="social-lnk">
+                        <a href="#"><img src="assets/images/sclnk_yt.svg" alt="صندوق تنمية الموارد البشري" /></a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+
+
+            <div class="footer-raw second-raw">
+                <div class="footer-images">
+                    <img src="assets/images/ExtLogo_HRSD.svg" alt="وزارة الموارد البشرية" />
+                    <img src="assets/images/ExtLogo_DT.svg" alt="برنامج التحول الوطني 2020" />
+                    <img src="assets/images/ExtLogo_Vision2030.svg" alt="رؤية المملكة 2030" />
+                    <img src="assets/images/ExtLogo_NICE.svg" alt="مركز المعلومات الوطني" />
+                </div>
+                <div class="footer-copyright">
+                    جميع الحقوق محفوظة &copy; لصندوق تنمية الموارد البشرية
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </footer>
+    <!---------------------------------------- /FOOTER ---------------------------------------->
+    <!-- SCRIPT LIBRARIES -->
+    <script src="assets/libraries/jquery3.7.1/jquery.min.js" type="text/javascript" charset="UTF-8"></script>
+    <script src="assets/js/popper.min.js" type="text/javascript" charset="UTF-8"></script>
+    <script src="assets/libraries/bootstrap5.3.3/bootstrap.min.js" type="text/javascript" charset="UTF-8"></script>
+
+    <script src="assets/libraries/select2/select2.min.js" type="text/javascript" charset="UTF-8"></script>
+
+    <script src="assets/libraries/datepicker/bootstrap-datetimepicker.min.js" type="text/javascript" charset="UTF-8"></script>
+    <script src="assets/libraries/datepicker/locales/bootstrap-datepicker.ar.js" type="text/javascript" charset="UTF-8"></script>
+
+    <script src="assets/libraries/map_leaflet/leaflet.js" type="text/javascript" charset="UTF-8"></script>
+
+    <script type="text/javascript" src="assets/libraries/pdf/jspdf.min.js"></script>
+    <script type="text/javascript" src="assets/libraries/pdf/html2canvas.js"></script>
+
+    <!-- HRDF SCRIPT -->
+    <script src="assets/js/hrdf.js" type="text/javascript" charset="UTF-8"></script>
+
+    <!-- DEMO SCRIPT ONLY -->
+    <script>
+        function showResult() {
+            $('#bankresult').show("slow");
+        }
+
+        function showAddExp() {
+            $('#addExp').show("slow");
+        }
+
+
+
+        var radios = document.querySelectorAll('input[type=radio][name="PropOwn"]');
+
+        function changeHandler(event) {
+            if (this.value === 'yes') {
+                $("#propdetails").show('slow');
+            } else {
+                $("#propdetails").hide('slow');
+            }
+        }
+
+        Array.prototype.forEach.call(radios, function (radio) {
+            radio.addEventListener('change', changeHandler);
+        });
+
+        $("body").on("change", "input", function () {
+            $(".discard").slideDown()
+        });
+
+
+        if ($(".map")[0]) {
+            var map = L.map('map').setView([24.6970354, 46.6828226], 16);
+
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: 'تطوير <a target="_blank" href="https://www.hrdf.org.sa">صندوق تنمية الموارد البشرية</a>'
+            }).addTo(map);
+
+            L.marker([24.6970354, 46.6828226]).addTo(map)
+                .bindPopup('عنواني')
+                .openPopup();
+
+        }
+
+
+        $(window).on("scroll", function () {
+            var scrollHeight = $(document).height();
+            var scrollPosition = $(window).height() + $(window).scrollTop();
+
+            var ScrollResult = (scrollHeight - scrollPosition);
+
+            if (parseInt(ScrollResult) < 299) {
+                $("#pageactions").removeClass('sticky');
+            } else {
+                $("#pageactions").addClass('sticky');
+            }
+        });
+
+
+
+
+    </script>
+
+    <!-- HIDDEN CONTENT -->
+    <div class="toast-container">
+        <div class="toast align-items-center text-bg-success border-0" id="CopySuccess" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    تم نسخ رقم الملف بنجاح
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <div class="modal fade" role="dialog" aria-labelledby="اضافة خبرة عملية" aria-hidden="true" id="addExp">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">إضافة خبرة عملية</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-6 mb-3">
+                            <label class="form-label">المسمى الوظيفي</label>
+                            <select class="form-select">
+                                <option selected>مهندس مدني</option>
+                                <option>طبيب</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-6 mb-3">
+                            <label class="form-label">المسمى حسب التأمينات</label>
+                            <input type="text" class="form-control" placeholder="المسمى الوظيفي حسب التأمينات" />
+                        </div>
+                        <div class="col-lg-6 mb-3">
+                            <label class="form-label">اسم المنشأة</label>
+                            <input type="text" class="form-control" placeholder="اسم المنشأة" />
+                        </div>
+                        <div class="col-lg-6 mb-3">
+                            <label class="form-label">مدة العمل</label>
+                            <input type="text" class="form-control" placeholder="الرجاء التحديد">
+                        </div>
+                        <div class="col-lg-6 mb-3">
+                            <label class="form-label">تاريخ البداية</label>
+                            <div class="form-group date" data-provide="datepicker">
+                                <input type="text" class="form-control" placeholder="الرجاء التحديد">
+                                <div class="input-group-addon">
+                                    <span class="gicon">calendar_month</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 mb-3">
+                            <label class="form-label">تاريخ النهاية</label>
+                            <div class="form-group date" data-provide="datepicker">
+                                <input type="text" class="form-control" placeholder="الرجاء التحديد">
+                                <div class="input-group-addon">
+                                    <span class="gicon">calendar_month</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 mb-3">
+                            <label class="form-label">الملف المرفق</label>
+                            <div class="inputfile-box">
+                                <input type="file" id="file" class="inputfile" onchange='uploadFile(this)'>
+                                <label for="file">
+                                    <span id="file-name" class="file-box">قم بإختيار الملف</span>
+                                    <span class="file-button">
+                                        <i class="fa fa-upload" aria-hidden="true"></i>
+                                        تحديد الملف
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 mb-3">
+                            <label class="form-label">عنوان المرفق</label>
+                            <input type="text" class="form-control" value="" placeholder="اسم المرفق">
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="modal-actions">
+                        <div class="action-right">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">العودة</button>
+                        </div>
+                        <div class="action-left">
+                            <button type="button" class="btn btn-primary">إضافة</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" role="dialog" aria-labelledby="اضافة فرد" aria-hidden="true" id="addFamily">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">اضافة افراد اسرتك يشمل ( الوالدين / الزوج او الزوجة)</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 mb-3">
+                            <label class="form-label">الحالة الإجتماعية</label>
+                            <select class="form-select">
+                                <option selected>متزج</option>
+                                <option>أعزب</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-6 col-md-6 mb-3">
+                            <label class="form-label">عدد أفراد أسرتك</label>
+                            <input type="number" class="form-control" value="01" />
+                            <span class="input-help">يشمل التي تقييم معهم ولا يشمل مقدم الطلب</span>
+                        </div>
+                        <div class="col-lg-6 col-md-6 mb-3">
+                            <label class="form-label">العلاقة الأسرية</label>
+                            <select class="form-select">
+                                <option selected>زوجة</option>
+                                <option>إبن/بنت</option>
+                                <option>والد/والدة</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-6 col-md-6 mb-3">
+                            <label class="form-label">الجنسية</label>
+                            <select class="form-control select2" name="state">
+                                <option value="SA" selected>المملكة العربية السعودية</option>
+                                <option value="OTHER">أخرى</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-6 col-md-6 mb-3">
+                            <label class="form-label">رقم الهوية</label>
+                            <input type="number" class="form-control" value="10032848312" />
+                        </div>
+                        <div class="col-lg-6 col-md-6 mb-3">
+                            <label class="form-label">تاريخ الميلاد</label>
+                            <div class="form-group date" data-provide="datepicker">
+                                <input type="text" class="form-control" value="03/10/2001">
+                                <div class="input-group-addon">
+                                    <span class="gicon">calendar_month</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 mb-3">
+                            <label class="form-label">نوع العمل</label>
+                            <select class="form-control select2" name="state">
+                                <option value="nurse" selected>ممرضة</option>
+                                <option value="OTHER">أخرى</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="modal-actions">
+                        <div class="action-right">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">العودة</button>
+                        </div>
+                        <div class="action-left">
+                            <button type="button" class="btn btn-primary">إضافة</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="modal fade" role="dialog" aria-labelledby="اضافة خبرة عملية" aria-hidden="true" id="Resume">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <div class="cv-action">
+                        <a href="javascript:void(0)" onclick="CreatePDFfromHTML()"><i class="gicon">file_download</i></a>
+                        <a href="javascript:void(0)" data-bs-dismiss="modal"><i class="gicon">close</i></a>
+                    </div>
+
+                    <div class="cv-holder">
+                        <div class="cv-container">
+                            <div class="cv-header">
+                                <img src="uploads/user_avatar.png" alt="" />
+                                <h1>طلال محمد سعود العتيقي</h1>
+                                <span>محلل أعمال أول</span>
+                                <ul class="cv-social">
+                                    <li class="ltr-content"><a href="javascript:void(0)"><i class="gicon">call</i> <em>+966 555 5555</em></a></li>
+                                    <li><a href="javascript:void(0)"><i class="gicon">insert_link</i> t.otiqi</a></li>
+                                    <li><a href="javascript:void(0)"><i class="gicon">email</i> t.otaiqi@hrdf.org.sa</a></li>
+                                </ul>
+
+                            </div>
+                            <div class="cv-block">
+                                <h2><i class="gicon">person_outline</i> نبذة عني</h2>
+                                <div class="cv-content">
+                                    <p>
+                                        هدفي كمحلل أعمال هو تطوير فهم شامل لعمل الشركة وتحليل احتياجاتها ومساعدتها في تحقيق أهدافها التجارية. أسعى لتقديم تحليلات دقيقة
+                                        وأفكار استراتيجية قابلة للتنفيذ التي تعزز الكفاءة والفاعلية التشغيلية للشركة. من خلال تطوير وتحسين العمليات والنظم القائمة، أهدف إلى زيادة
+                                        الإنتاجية وتحقيق التوفير في التكاليف. أعمل على تحليل البيانات وتقديم تقارير مفصلة تساهم في اتخاذ القرارات الاستراتيجية والتكتيكية بناءً على
+                                        معلومات دقيقة وموثوقة.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="cv-block">
+                                <h2><i class="gicon">target</i> الهدف الوظيفي</h2>
+                                <div class="cv-content">
+                                    <p>
+                                        هدفي كمحلل أعمال هو تطوير فهم شامل لعمل الشركة وتحليل احتياجاتها ومساعدتها في تحقيق أهدافها التجارية. أسعى لتقديم تحليلات دقيقة
+                                        وأفكار استراتيجية قابلة للتنفيذ التي تعزز الكفاءة والفاعلية التشغيلية للشركة. من خلال تطوير وتحسين العمليات والنظم القائمة، أهدف إلى زيادة
+                                        الإنتاجية وتحقيق التوفير في التكاليف. أعمل على تحليل البيانات وتقديم تقارير مفصلة تساهم في اتخاذ القرارات الاستراتيجية والتكتيكية بناءً على
+                                        معلومات دقيقة وموثوقة.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="cv-block">
+                                <h2><i class="gicon">business_center</i> الخبرات العملية</h2>
+                                <div class="cv-content">
+                                    <ul>
+                                        <li>
+                                            <div class="cv-iten-details">
+                                                <h6>محلل أعمال أول</h6>
+                                                <span>محلل أعمال - شركة تمكين للتقنيات</span>
+                                            </div>
+                                            <date>مارس 2021 - مارس 2022</date>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="cv-block">
+                                <h2><i class="gicon">school</i> التعليم</h2>
+                                <div class="cv-content">
+                                    <ul>
+                                        <li>
+                                            <div class="cv-iten-details">
+                                                <h6>علوم الحاسب</h6>
+                                                <span>بكالوريوس - جامعة الامام محمد بن سعود - 3.00</span>
+                                            </div>
+                                            <date>مارس 2021</date>
+                                        </li>
+                                        <li>
+                                            <div class="cv-iten-details">
+                                                <h6>برمجة وتطوير</h6>
+                                                <span>دبلوم - الكلية التقنية - 3.00</span>
+                                            </div>
+                                            <date>مارس 2017</date>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="cv-block">
+                                <h2><i class="gicon">auto_stories</i> الدورات التدريبية</h2>
+                                <div class="cv-content">
+                                    <h4>الدورات الخاصة بالوظيفة</h4>
+                                    <ul>
+                                        <li>
+                                            <div class="cv-iten-details">
+                                                <h6>إدارة أعمال</h6>
+                                                <span>240 ساعة - نظم معلومات</span>
+                                            </div>
+                                            <date>مارس 2021</date>
+                                        </li>
+                                    </ul>
+                                    <h4>الدورات الخاصة بالمهارات</h4>
+                                    <ul>
+                                        <li>
+                                            <div class="cv-iten-details">
+                                                <h6>هيكلة البيانات الأساسية</h6>
+                                                <span>70 ساعة - تحليل المعلومات</span>
+                                            </div>
+                                            <date>مارس 2017</date>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="cv-block">
+                                <h2><i class="gicon">class</i> الشهادات</h2>
+                                <div class="cv-content">
+                                    <ul>
+                                        <li>
+                                            <div class="cv-iten-details">
+                                                <h6>البرمجة والتطوير</h6>
+                                                <span>شركة تمكين للتقنيات - شهادة إحترافية</span>
+                                            </div>
+                                            <date>مارس 2021</date>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="cv-block">
+                                <h2><i class="gicon">badge</i> العضويات</h2>
+                                <div class="cv-content">
+                                    <ul>
+                                        <li>
+                                            <div class="cv-iten-details">
+                                                <h6>الأعمال التطوعية</h6>
+                                                <span>منصة إحسان - 200 ساعة</span>
+                                            </div>
+                                            <date>مارس 2021</date>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="cv-holder cv-print">
+        <div class="cv-container">
+            <div class="cv-header">
+                <img src="uploads/user_avatar.png" alt="" />
+                <h1>طلال محمد سعود العتيقي</h1>
+                <span>محلل أعمال أول</span>
+                <ul class="cv-social">
+                    <li class="ltr-content"><a href="javascript:void(0)"><i class="gicon">call</i> <em>+966 555 5555</em></a></li>
+                    <li><a href="javascript:void(0)"><i class="gicon">insert_link</i> t.otiqi</a></li>
+                    <li><a href="javascript:void(0)"><i class="gicon">email</i> t.otaiqi@hrdf.org.sa</a></li>
+                </ul>
+
+            </div>
+            <div class="cv-block">
+                <h2><i class="gicon">person_outline</i> نبذة عني</h2>
+                <div class="cv-content">
+                    <p>
+                        هدفي كمحلل أعمال هو تطوير فهم شامل لعمل الشركة وتحليل احتياجاتها ومساعدتها في تحقيق أهدافها التجارية. أسعى لتقديم تحليلات دقيقة
+                        وأفكار استراتيجية قابلة للتنفيذ التي تعزز الكفاءة والفاعلية التشغيلية للشركة. من خلال تطوير وتحسين العمليات والنظم القائمة، أهدف إلى زيادة
+                        الإنتاجية وتحقيق التوفير في التكاليف. أعمل على تحليل البيانات وتقديم تقارير مفصلة تساهم في اتخاذ القرارات الاستراتيجية والتكتيكية بناءً على
+                        معلومات دقيقة وموثوقة.
+                    </p>
+                </div>
+            </div>
+            <div class="cv-block">
+                <h2><i class="gicon">target</i> الهدف الوظيفي</h2>
+                <div class="cv-content">
+                    <p>
+                        هدفي كمحلل أعمال هو تطوير فهم شامل لعمل الشركة وتحليل احتياجاتها ومساعدتها في تحقيق أهدافها التجارية. أسعى لتقديم تحليلات دقيقة
+                        وأفكار استراتيجية قابلة للتنفيذ التي تعزز الكفاءة والفاعلية التشغيلية للشركة. من خلال تطوير وتحسين العمليات والنظم القائمة، أهدف إلى زيادة
+                        الإنتاجية وتحقيق التوفير في التكاليف. أعمل على تحليل البيانات وتقديم تقارير مفصلة تساهم في اتخاذ القرارات الاستراتيجية والتكتيكية بناءً على
+                        معلومات دقيقة وموثوقة.
+                    </p>
+                </div>
+            </div>
+            <div class="cv-block">
+                <h2><i class="gicon">business_center</i> الخبرات العملية</h2>
+                <div class="cv-content">
+                    <ul>
+                        <li>
+                            <div class="cv-iten-details">
+                                <h6>محلل أعمال أول</h6>
+                                <span>محلل أعمال - شركة تمكين للتقنيات</span>
+                            </div>
+                            <date>مارس 2021 - مارس 2022</date>
+                        </li>
+                        <li>
+                            <div class="cv-iten-details">
+                                <h6>محلل أعمال أول</h6>
+                                <span>محلل أعمال - شركة تمكين للتقنيات</span>
+                            </div>
+                            <date>مارس 2021 - مارس 2022</date>
+                        </li>
+                        <li>
+                            <div class="cv-iten-details">
+                                <h6>محلل أعمال أول</h6>
+                                <span>محلل أعمال - شركة تمكين للتقنيات</span>
+                            </div>
+                            <date>مارس 2021 - مارس 2022</date>
+                        </li>
+                        <li>
+                            <div class="cv-iten-details">
+                                <h6>محلل أعمال أول</h6>
+                                <span>محلل أعمال - شركة تمكين للتقنيات</span>
+                            </div>
+                            <date>مارس 2021 - مارس 2022</date>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="cv-block">
+                <h2 class="avoid-break"><i class="gicon">school</i> التعليم</h2>
+                <div class="cv-content avoid-break">
+                    <ul>
+                        <li>
+                            <div class="cv-iten-details">
+                                <h6>علوم الحاسب</h6>
+                                <span>بكالوريوس - جامعة الامام محمد بن سعود - 3.00</span>
+                            </div>
+                            <date>مارس 2021</date>
+                        </li>
+                        <li>
+                            <div class="cv-iten-details">
+                                <h6>برمجة وتطوير</h6>
+                                <span>دبلوم - الكلية التقنية - 3.00</span>
+                            </div>
+                            <date>مارس 2017</date>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="cv-block">
+                <h2><i class="gicon">auto_stories</i> الدورات التدريبية</h2>
+                <div class="cv-content">
+                    <h4>الدورات الخاصة بالوظيفة</h4>
+                    <ul>
+                        <li>
+                            <div class="cv-iten-details">
+                                <h6>إدارة أعمال</h6>
+                                <span>240 ساعة - نظم معلومات</span>
+                            </div>
+                            <date>مارس 2021</date>
+                        </li>
+                    </ul>
+                    <h4>الدورات الخاصة بالمهارات</h4>
+                    <ul>
+                        <li>
+                            <div class="cv-iten-details">
+                                <h6>هيكلة البيانات الأساسية</h6>
+                                <span>70 ساعة - تحليل المعلومات</span>
+                            </div>
+                            <date>مارس 2017</date>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="cv-block">
+                <h2><i class="gicon">class</i> الشهادات</h2>
+                <div class="cv-content">
+                    <ul>
+                        <li>
+                            <div class="cv-iten-details">
+                                <h6>البرمجة والتطوير</h6>
+                                <span>شركة تمكين للتقنيات - شهادة إحترافية</span>
+                            </div>
+                            <date>مارس 2021</date>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="cv-block">
+                <h2><i class="gicon">badge</i> العضويات</h2>
+                <div class="cv-content">
+                    <ul>
+                        <li>
+                            <div class="cv-iten-details">
+                                <h6>الأعمال التطوعية</h6>
+                                <span>منصة إحسان - 200 ساعة</span>
+                            </div>
+                            <date>مارس 2021</date>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

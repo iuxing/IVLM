@@ -1,0 +1,380 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, minimum-scale=1, minimal-ui" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <link type="image/x-icon" rel="shortcut icon" href="favicon.png" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+
+    <title>صندوق تنمية الموارد البشرية</title>
+
+
+    <!-- STYLE LIBRARIES -->
+    <link href="assets/libraries/owl-carousel/owl.carousel.min.css" type="text/css" rel="stylesheet" />
+    <!-- Boorstrap library -->
+    <link href="assets/libraries/bootstrap2.3.2/bootstrap.css" type="text/css" rel="stylesheet" />
+    <link href="assets/libraries/bootstrap2.3.2/bootstrap-responsive.css" type="text/css" rel="stylesheet" />
+
+
+    <!-- PLUGINS STYLE-->
+    <!-- Off-Canvas Menu -->
+    <link href="assets/libraries/menu/offcanvas.css" type="text/css" rel="stylesheet" />
+
+
+    <!-- CUSTOM STYLLE -->
+    <!-- Reset style -->
+    <link href="assets/css/reset_en.css" type="text/css" rel="stylesheet" />
+    <!-- HRDF style -->
+    <link href="assets/css/HRDF_en.css" type="text/css" rel="stylesheet" />
+
+
+</head>
+<body>
+
+
+    <header class="header">
+
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <a class="navbar-brand text-white" href="#"><img src="assets/images/Logo_white.svg" alt="صندوق تنمية الموارد البشرية" /></a>
+
+                <div class="offcanvas offcanvas-start-lg" tabindex="-1" id="topmenu" aria-labelledby="topmenuLabel">
+                    <div class="offcanvas-header d-flex d-lg-none">
+                        <a href="#" class="offcanvas-title text-white" id="topmenuLabel"><img src="assets/images/Logo_white.svg" alt="صندوق تنمية الموارد البشرية" /></a>
+                        <a href="javascript:void(0) " class="offcanvas-close p-0" data-bs-dismiss="offcanvas" aria-label="close">
+                            <i class="gicon">close</i>
+                        </a>
+                    </div>
+                    <div class="offcanvas-body p-lg-0">
+                        <ul class="navbar-nav">
+                            <li class="mini-userprofile">
+                                <a href="#" class="userinfos">
+                                    <img src="uploads/user_avatar.png" alt="Talal AlOtaiqi" />
+                                    <div class="userinfo">
+                                        <label>Talal AlOtaiqi</label>
+                                        <span>t.otaiqi@hrdf.org.sa</span>
+                                    </div>
+                                    <i class="gicon size-20">chevron_right</i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">Events</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">Contacts</a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                    <div class="offcanvas-footer">
+                        <a href="#" class="logout-lnk">
+                            <i class="gicon">logout</i> Logout
+                        </a>
+                        <span class="mobile-copyrights">All copyrights reserved &copy; Humman Resources Development Fund</span>
+                    </div>
+
+                </div>
+                <div class="offcanvas-end">
+                    <a href="javascript:void(0)" class="menu-icon"><i class="gicon">notifications</i> <em class="notification-count">2</em></a>
+                    <a href="javascript:void(0)" class="menu-icon"><i class="gicon">calendar_month</i></a>
+                    <div class="dropdown topuserprofile">
+                        <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="uploads/user_avatar.png" alt="Talal AlOtaiqi" />
+                            <span>Talal AlOtaiqi</span>
+                            <i class="gicon size-16">expand_more</i>
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li>
+                                <div class="userinfos">
+                                    <img src="uploads/user_avatar.png" alt="Talal AlOtaiqi" />
+                                    <div class="userinfo">
+                                        <label>Talal AlOtaiqi</label>
+                                        <span>t.otaiqi@hrdf.org.sa</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="dm-lnk"><a class="dropdown-item" href="#">My Profile</a></li>
+                            <li class="dm-lnk"><a class="dropdown-item" href="#">Eligibility Logs</a></li>
+                            <li class="dm-lnk"><a class="dropdown-item" href="#">Reference</a></li>
+                            <li class="dm-lnk logout-lnk"><a class="dropdown-item" href="#"><i class="gicon">logout</i> Logout</a></li>
+                        </ul>
+                    </div>
+                    <button class="btn navbar-toggler border-3 px-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#topmenu" aria-controls="topmenu">
+                        <i class="gicon">menu</i>
+                    </button>
+                </div>
+
+            </div>
+        </nav>
+
+    </header>
+    <!---------------------------------------- /HEADER ---------------------------------------->
+    <!---------------------------------------- MAIN ---------------------------------------->
+    <main>
+        <div class="container">
+            <div class="row home-dashboard">
+                <div class="col-lg-4">
+                    <div class="home-userinfos">
+                        <img src="uploads/user_avatar.png" alt="Talal AlOtaiqi" />
+                        <div class="home-userinfo">
+                            <span>Hello،</span>
+                            <label>Talal Abdullah AlOtaiqi</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="row home-stats">
+                        <div class="col-lg-4">
+                            <div class="stat-item">
+                                <div class="stat-info">
+                                    <span class="count">1</span>
+                                    <label>Active Sessions</label>
+                                </div>
+                                <i class="stat-icon gicon">conversion_path</i>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="stat-item">
+                                <div class="stat-info">
+                                    <span class="count">3,500</span>
+                                    <label>Support Amount</label>
+                                </div>
+                                <i class="stat-icon gicon">payments</i>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="stat-item">
+                                <div class="stat-info">
+                                    <span class="count">1</span>
+                                    <label>Active Warnings</label>
+                                </div>
+                                <i class="stat-icon gicon text-danger">release_alert</i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row home-programs">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header"><h4>Programes &amp; Services</h4></div>
+                        <div class="card-body">
+                            <div class="prog-cards">
+                                <div class="prog-cards-item">
+                                    <div class="prog-title">
+                                        <img src="assets/images/ProgIcons_Jobaid.svg" alt="إعانة البحث عن عمل - حافز" />
+                                        <h5>Job search assistance <span>(Hafez)</span></h5>
+                                    </div>
+                                    <a href="#" class="prog-card-action">
+                                        <i class="gicon">chevron_right</i>
+                                    </a>
+                                </div>
+
+
+                                <div class="prog-cards-item">
+                                    <div class="prog-title">
+                                        <img src="assets/images/ProgIcons_Channels.svg" alt="إعانة البحث عن عمل - حافز" />
+                                        <h5>Employment Channels</h5>
+                                    </div>
+                                    <a href="#" class="prog-card-action">
+                                        <i class="gicon">chevron_right</i>
+                                    </a>
+                                </div>
+
+
+                                <div class="prog-cards-item external-card">
+                                    <div class="prog-title">
+                                        <img src="assets/images/hadaf_logo_white.svg" alt="إعانة البحث عن عمل - حافز" />
+                                        <h5>To access other enable programs</h5>
+                                        <span>go to HADAF Platform</span>
+                                    </div>
+                                    <a href="#" class="prog-card-action">
+                                        <i class="gicon">ungroup</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row home-tips">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Tips to find job</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="tip-cards owl-carousel owl-2">
+                                <div class="tip-card">
+                                    <img src="uploads/carousel_img01.jpg" alt="Image" />
+                                    <div class="tip-details">
+                                        <h6><i class="gicon">search</i> البحث عن وظيفة</h6>
+                                        <span>يجب الا يقتصر البحث عن عمل على اتجاه واحد فقط كالبحث في المواقع الالكترونية, لذا عليك التعرف على المزيد من الأساليب المختلفة والتي يستخدمها اصحاب العمل للبحث عن الموظفين</span>
+                                    </div>
+                                </div>
+                                <div class="tip-card">
+                                    <img src="uploads/carousel_img02.jpg" alt="Image" />
+                                    <div class="tip-details">
+                                        <h6><i class="gicon">school</i> برنامج دعم التدريب</h6>
+                                        <span>وصف بسيط عن المنتج وصف بسيط عن المنتج وصف بسيط عن المنتج وصف بسيط عن المنتج وصف بسيط عن المنتج وصف بسيط عن المنتج وصف بسيط عن المنتج وصف بسيط عن المنتج </span>
+                                    </div>
+                                </div>
+                                <div class="tip-card">
+                                    <img src="uploads/carousel_img01.jpg" alt="Image" />
+                                    <div class="tip-details">
+                                        <h6><i class="gicon">search</i> البحث عن وظيفة</h6>
+                                        <span>يجب الا يقتصر البحث عن عمل على اتجاه واحد فقط كالبحث في المواقع الالكترونية, لذا عليك التعرف على المزيد من الأساليب المختلفة والتي يستخدمها اصحاب العمل للبحث عن الموظفين</span>
+                                    </div>
+                                </div>
+                                <div class="tip-card">
+                                    <img src="uploads/carousel_img02.jpg" alt="Image" />
+                                    <div class="tip-details">
+                                        <h6><i class="gicon">school</i> برنامج دعم التدريب</h6>
+                                        <span>وصف بسيط عن المنتج وصف بسيط عن المنتج وصف بسيط عن المنتج وصف بسيط عن المنتج وصف بسيط عن المنتج وصف بسيط عن المنتج وصف بسيط عن المنتج وصف بسيط عن المنتج </span>
+                                    </div>
+                                </div>
+                                <div class="tip-card">
+                                    <img src="uploads/carousel_img01.jpg" alt="Image" />
+                                    <div class="tip-details">
+                                        <h6><i class="gicon">search</i> البحث عن وظيفة</h6>
+                                        <span>يجب الا يقتصر البحث عن عمل على اتجاه واحد فقط كالبحث في المواقع الالكترونية, لذا عليك التعرف على المزيد من الأساليب المختلفة والتي يستخدمها اصحاب العمل للبحث عن الموظفين</span>
+                                    </div>
+                                </div>
+                                <div class="tip-card">
+                                    <img src="uploads/carousel_img02.jpg" alt="Image" />
+                                    <div class="tip-details">
+                                        <h6><i class="gicon">school</i> برنامج دعم التدريب</h6>
+                                        <span>وصف بسيط عن المنتج وصف بسيط عن المنتج وصف بسيط عن المنتج وصف بسيط عن المنتج وصف بسيط عن المنتج وصف بسيط عن المنتج وصف بسيط عن المنتج وصف بسيط عن المنتج </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="row home-extplats">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>External Portals</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-4 col-sm-12">
+                                    <div class="ext-plat bg-primary">
+                                        <h6>JADARAT</h6>
+                                        <span>review all the jobs that suit you and apply for them.</span>
+                                        <a href="#" target="_blank">
+                                            <i class="gicon">ungroup</i>
+                                            GO TO JADARAT
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-12">
+                                    <div class="ext-plat bg-secondary">
+                                        <h6>eLEARNING</h6>
+                                        <span>training e-courses serving all specializations.</span>
+                                        <a href="#" target="_blank">
+                                            <i class="gicon">ungroup</i>
+                                            GO TO DOROB
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-12">
+                                    <div class="ext-plat bg-orange">
+                                        <h6>SOBOL</h6>
+                                        <span>Discover your professional inclinations and find out which job is right for you.</span>
+                                        <a href="#" target="_blank">
+                                            <i class="gicon">ungroup</i>
+                                            GO TO SOBOL
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!---------------------------------------- /MAIN ---------------------------------------->
+    <!---------------------------------------- FOOTER ---------------------------------------->
+    <footer>
+        <div class="container">
+            <div class="footer-raw first-raw">
+                <ul class="footer-menu">
+                    <li class="footer-lnk">
+                        <a href="#">Privacy Policy</a>
+                    </li>
+                    <li class="footer-lnk">
+                        <a href="#">Terms of Use</a>
+                    </li>
+                    <li class="footer-lnk">
+                        <a href="#">FAQ</a>
+                    </li>
+                </ul>
+                <ul class="social-menu">
+                    <li class="social-lnk">
+                        <a href="#"><img src="assets/images/sclnk_fb.svg" alt="صندوق تنمية الموارد البشري" /></a>
+                    </li>
+                    <li class="social-lnk">
+                        <a href="#"><img src="assets/images/sclnk_tw.svg" alt="صندوق تنمية الموارد البشري" /></a>
+                    </li>
+                    <li class="social-lnk">
+                        <a href="#"><img src="assets/images/sclnk_li.svg" alt="صندوق تنمية الموارد البشري" /></a>
+                    </li>
+                    <li class="social-lnk">
+                        <a href="#"><img src="assets/images/sclnk_yt.svg" alt="صندوق تنمية الموارد البشري" /></a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="footer-raw second-raw">
+                <div class="footer-images">
+                    <img src="assets/images/ExtLogo_HRSD.svg" alt="وزارة الموارد البشرية" />
+                    <img src="assets/images/ExtLogo_DT.svg" alt="برنامج التحول الوطني 2020" />
+                    <img src="assets/images/ExtLogo_Vision2030.svg" alt="رؤية المملكة 2030" />
+                    <img src="assets/images/ExtLogo_NICE.svg" alt="مركز المعلومات الوطني" />
+                </div>
+                <div class="footer-copyright">
+                    All copyrights reserved &copy; Humman Resources Development Fund
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </footer>
+    <!---------------------------------------- /FOOTER ---------------------------------------->
+    <!-- SCRIPT LIBRARIES -->
+    <script src="assets/libraries/jquery3.7.1/jquery.min.js" type="text/javascript" charset="UTF-8"></script>
+    <script src="assets/js/popper.min.js" type="text/javascript" charset="UTF-8"></script>
+
+    <!-- VERSION 5.3.3 -->
+    <!--<script src="assets/libraries/bootstrap5.3.3/bootstrap.min.js" type="text/javascript" charset="UTF-8"></script>-->
+    
+    <!-- VERSION 2.3.2 -->
+    <script src="assets/libraries/bootstrap2.3.2/bootstrap.js" type="text/javascript" charset="UTF-8"></script>
+
+    <script src="assets/libraries/owl-carousel/owl.carousel.min.js" type="text/javascript" charset="UTF-8"></script>
+
+    <!-- HRDF SCRIPT -->
+    <script src="assets/js/hrdf_en.js" type="text/javascript" charset="UTF-8"></script>
+</body>
+</html>

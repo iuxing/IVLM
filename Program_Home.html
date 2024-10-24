@@ -1,0 +1,372 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, minimum-scale=1, minimal-ui" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <link type="image/x-icon" rel="shortcut icon" href="favicon.png" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+
+    <title>صندوق تنمية الموارد البشرية</title>
+
+
+    <!-- STYLE LIBRARIES -->
+    <link href="assets/libraries/owl-carousel/owl.carousel.min.css" type="text/css" rel="stylesheet" />
+    <!-- Boorstrap library -->
+    <link href="assets/libraries/bootstrap5.3.3/bootstrap.rtl.min.css" type="text/css" rel="stylesheet" />
+
+
+    <!-- PLUGINS STYLE-->
+    <!-- Off-Canvas Menu -->
+    <link href="assets/libraries/menu/offcanvas.css" type="text/css" rel="stylesheet" />
+
+
+    <!-- CUSTOM STYLLE -->
+    <!-- Reset style -->
+    <link href="assets/css/reset.css" type="text/css" rel="stylesheet" />
+    <!-- HRDF style -->
+    <link href="assets/css/hrdf.css" type="text/css" rel="stylesheet" />
+
+
+</head>
+<body>
+
+
+    <header class="header">
+
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <a class="navbar-brand text-white" href="#"><img src="assets/images/Logo_white.svg" alt="صندوق تنمية الموارد البشرية" /></a>
+
+                <div class="offcanvas offcanvas-start-lg" tabindex="-1" id="topmenu" aria-labelledby="topmenuLabel">
+                    <div class="offcanvas-header d-flex d-lg-none">
+                        <a href="#" class="offcanvas-title text-white" id="topmenuLabel"><img src="assets/images/Logo_white.svg" alt="صندوق تنمية الموارد البشرية" /></a>
+                        <a href="javascript:void(0) " class="offcanvas-close p-0" data-bs-dismiss="offcanvas" aria-label="close">
+                            <i class="gicon">close</i>
+                        </a>
+                    </div>
+                    <div class="offcanvas-body p-lg-0">
+                        <ul class="navbar-nav">
+                            <li class="mini-userprofile">
+                                <a href="#" class="userinfos">
+                                    <img src="uploads/user_avatar.png" alt="طلال العتيقي" />
+                                    <div class="userinfo">
+                                        <label>طلال العتيقي</label>
+                                        <span>t.otaiqi@hrdf.org.sa</span>
+                                    </div>
+                                    <i class="gicon size-20">navigate_before</i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">الرئيسية</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">اللقاءات</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">إتصل بنا</a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                    <div class="offcanvas-footer">
+                        <a href="#" class="logout-lnk">
+                            <i class="gicon">logout</i> تسجيل الخروج
+                        </a>
+                        <span class="mobile-copyrights">جميع الحقوق محفوظة &copy; لصندوق تنمية الموارد البشرية</span>
+                    </div>
+
+                </div>
+                <div class="offcanvas-end">
+                    <a href="javascript:void(0)" class="menu-icon"><i class="gicon">notifications</i> <em class="notification-count">2</em></a>
+                    <a href="javascript:void(0)" class="menu-icon"><i class="gicon">calendar_month</i></a>
+                    <div class="dropdown topuserprofile">
+                        <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="uploads/user_avatar.png" alt="طلال العتيقي" />
+                            <span>طلال العتيقي</span>
+                            <i class="gicon size-16">expand_more</i>
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li>
+                                <div class="userinfos">
+                                    <img src="uploads/user_avatar.png" alt="طلال العتيقي" />
+                                    <div class="userinfo">
+                                        <label>طلال العتيقي</label>
+                                        <span>t.otaiqi@hrdf.org.sa</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="dm-lnk"><a class="dropdown-item" href="#">الملف الشخصي</a></li>
+                            <li class="dm-lnk"><a class="dropdown-item" href="#">سجل التحققات من الأهلية</a></li>
+                            <li class="dm-lnk"><a class="dropdown-item" href="#">التفضيلات</a></li>
+                            <li class="dm-lnk logout-lnk"><a class="dropdown-item" href="#"><i class="gicon">logout</i> تسجيل الخروج</a></li>
+                        </ul>
+                    </div>
+                    <button class="btn navbar-toggler border-3 px-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#topmenu" aria-controls="topmenu">
+                        <i class="gicon">menu</i>
+                    </button>
+                </div>
+
+            </div>
+        </nav>
+
+    </header>
+    <!---------------------------------------- /HEADER ---------------------------------------->
+    <!---------------------------------------- MAIN ---------------------------------------->
+    <main>
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#"><i class="gicon size-20">home_app_logo</i></a></li>
+                    <li class="breadcrumb-item">البرامج</li>
+                    <li class="breadcrumb-item active" aria-current="page">إعانة البحث عن عمل</li>
+                </ol>
+            </nav>
+
+            <div class="page-header">
+                <div class="prog-details">
+                    <div class="prog-icon">
+                        <img src="assets/images/HRDFIcon_Chair.svg" alt="" />
+                    </div>
+                    <h2 class="prog-title">
+                        إعانة البحث عن عمل
+                        <small>(حافز)</small>
+                    </h2>
+                </div>
+            </div>
+
+
+
+            <div class="row page-content">
+                <div class="col-12 content-subtitle">
+                    <h4>وصف البرنامج</h4>
+                </div>
+                <div class="col-12 content-box">
+                    برنامج يدعم الباحثين عن عمل لتحفيزهم على الدخول الى سوق العمل، من خلال تقديم إعانة مالية لمدة 15 شهر تبدأ بمبلغ 2000 ريال بالإضافة الى تقديم مجموعة من خدمات التدريب والتوظيف لمساعدتهم في الحصول على عمل.ويستهدف البرنامج الباحثين عن عمل من فئة الداخلين لسوق العمل خلال أول سنتين من انتهاء التعليم أو التدريب وفئة المنقطعين عن سوق العمل لأكثر من سنتين.
+                </div>
+
+
+                <div class="col-12 content-subtitle">
+                    <h4>مزايا البرنامج</h4>
+                </div>
+                <div class="col-12 content-box">
+                    <ul class="content-list">
+                        <li>يستفيد الباحث عن عمل المسجل في البرنامج تلقائيا عبر ربط ملفه الشخصي بفروع ومراكز الصندوق وبرامج التدريب الإلكتروني والخدمات الأخرى.</li>
+                        <li>
+                            يستفيد الباحث عن عمل المسجل في البرنامج من الإعانة المالية لمدة خمسة عشر شهر، وتكون قيمة الدعم خلالها على النحو التالي:
+                            <table class="hrdf-qtable">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            المبلغ
+                                        </th>
+                                        <th>المدة</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            2000 ريال شهرياً
+                                        </td>
+                                        <td>
+                                            4 أشهر
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            1500 ريال شهرياً
+                                        </td>
+                                        <td>
+                                            4 أشهر
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            1000 ريال شهرياً
+                                        </td>
+                                        <td>
+                                            4 أشهر
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            75ٍ0 ريال شهرياً
+                                        </td>
+                                        <td>
+                                            4 أشهر
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </li>
+                        <li>
+                            يستطيع الباحث عن عمل المسجل في البرنامج في حال رغبته طلب إيقاف صرف الإعانة قبل انتهاء مدة البرنامج في أي وقت ثم إعادة التقديم على البرنامج لاحقاً عند الحاجة لاستكمال صرف المدة المتبقية من الإعانة
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-12 content-subtitle">
+                    <h4>الإلتزامات</h4>
+                </div>
+                <div class="col-12 content-box">
+                    هي مجموعة من المهام والأنشطة والالتزامات التي يتم القيام بها لإثبات الرغبة والجدية في البحث عن عمل وتهدف في مجملها الى مساعدة الباحث عن عمل في الحصول على عمل، ويترتب على عدم القيام بهذه الالتزامات حصول الباحث عن عمل على إنذارات /مخالفات ثم استبعاده من البرنامج عند الوصول للحد الأعلى من الإنذارات/المخالفات،
+                </div>
+
+                <div class="col-12 content-subtitle">
+                    <h4>شروط الأهلية</h4>
+                </div>
+                <div class="col-12 content-box">
+                    <ul class="content-list">
+                        <li>
+                            أن يكون سعودي الجنسية.
+                        </li>
+                        <li>
+                            ألا يقل عمره عن 18 سنة ولا يزيد عن 60 سنة.
+                        </li>
+                        <li>
+                            أن يكون مسجلاً في البوابة الوطنية للعمل طاقات.
+                        </li>
+                        <li>
+                            ألا يكون موظفا حكوميا نشطا (حسب بيانات وزارة الموارد البشرية والتنمية الاجتماعية).
+                        </li>
+                        <li>
+                            يجب أن يكون الفرد موظفا نشطا في التأمينات الاجتماعية في حالكون البرنامج يستهدف الموظفين فقط.
+                        </li>
+                        <li>
+                            يجب ألا يكون الفرد موظفا نشطا في التأمينات الاجتماعية إذا كان البرنامج يستهدف الباحثين عن عمل فقط.
+                        </li>
+                        <li>
+                            لا تتأثر أهلية الفرد من دعم الصندوق في برامج أخرى.
+                        </li>
+                        <li>
+                            يمكن للفرد الاستفادة من برنامج واحد فقط في المسار المهني وبرنامج واحد في مسار المهارات العامة ولا يمكن للفرد الاستفادة من برنامجين في نفس المسار.
+                        </li>
+                        <li>
+                            توافر البيانات الشخصية في الملف الشخصي للفرد.
+                        </li>
+
+                    </ul>
+                </div>
+
+
+                <div class="col-12 content-subtitle">
+                    <h4>المستندات</h4>
+                </div>
+                <div class="col-12 content-docs">
+                    <a href="#" class="content-doc">
+                        <img src="assets/images/pdfICON.svg" alt="" />
+                        <span>
+                            الشروط والأحكام
+                            <em>916.27 KB</em>
+                            <i class="gicon">more_horiz</i>
+                        </span>
+                    </a>
+
+                    <a href="#" class="content-doc">
+                        <img src="assets/images/pdfICON.svg" alt="" />
+                        <span>
+                            الشروط والأحكام
+                            <em>916.27 KB</em>
+                            <i class="gicon">more_horiz</i>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!---------------------------------------- /MAIN ---------------------------------------->
+
+
+
+    <div class="page-actions sticky" id="pageactions">
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <button class="btn btn-secondary discard" type="button" id="discard">الرجوع</button>
+                </div>
+                <div class="col-6 text-end">
+                    <button class="btn btn-primary" type="button">التالي</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!---------------------------------------- FOOTER ---------------------------------------->
+    <footer>
+        <div class="container">
+            <div class="footer-raw first-raw">
+                <ul class="footer-menu">
+                    <li class="footer-lnk">
+                        <a href="#">سياسة الخصوصية</a>
+                    </li>
+                    <li class="footer-lnk">
+                        <a href="#">شروط الإستخدام</a>
+                    </li>
+                    <li class="footer-lnk">
+                        <a href="#">الأسئلة الشائعة</a>
+                    </li>
+                </ul>
+                <ul class="social-menu">
+                    <li class="social-lnk">
+                        <a href="#"><img src="assets/images/sclnk_fb.svg" alt="صندوق تنمية الموارد البشري" /></a>
+                    </li>
+                    <li class="social-lnk">
+                        <a href="#"><img src="assets/images/sclnk_tw.svg" alt="صندوق تنمية الموارد البشري" /></a>
+                    </li>
+                    <li class="social-lnk">
+                        <a href="#"><img src="assets/images/sclnk_li.svg" alt="صندوق تنمية الموارد البشري" /></a>
+                    </li>
+                    <li class="social-lnk">
+                        <a href="#"><img src="assets/images/sclnk_yt.svg" alt="صندوق تنمية الموارد البشري" /></a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="footer-raw second-raw">
+                <div class="footer-images">
+                    <img src="assets/images/ExtLogo_HRSD.svg" alt="وزارة الموارد البشرية" />
+                    <img src="assets/images/ExtLogo_DT.svg" alt="برنامج التحول الوطني 2020" />
+                    <img src="assets/images/ExtLogo_Vision2030.svg" alt="رؤية المملكة 2030" />
+                    <img src="assets/images/ExtLogo_NICE.svg" alt="مركز المعلومات الوطني" />
+                </div>
+                <div class="footer-copyright">
+                    جميع الحقوق محفوظة &copy; لصندوق تنمية الموارد البشرية
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </footer>
+    <!---------------------------------------- /FOOTER ---------------------------------------->
+    <!-- SCRIPT LIBRARIES -->
+    <script src="assets/libraries/jquery3.7.1/jquery.min.js" type="text/javascript" charset="UTF-8"></script>
+    <script src="assets/js/popper.min.js" type="text/javascript" charset="UTF-8"></script>
+    <script src="assets/libraries/bootstrap5.3.3/bootstrap.min.js" type="text/javascript" charset="UTF-8"></script>
+    <script src="assets/libraries/owl-carousel/owl.carousel.min.js" type="text/javascript" charset="UTF-8"></script>
+
+    <!-- HRDF SCRIPT -->
+    <script src="assets/js/hrdf.js" type="text/javascript" charset="UTF-8"></script>
+
+
+    <script>
+        $(window).on("scroll", function () {
+            var scrollHeight = $(document).height();
+            var scrollPosition = $(window).height() + $(window).scrollTop();
+
+            var ScrollResult = (scrollHeight - scrollPosition);
+
+            if (parseInt(ScrollResult) < 299) {
+                $("#pageactions").removeClass('sticky');
+            } else {
+                $("#pageactions").addClass('sticky');
+            }
+        });
+    </script>
+</body>
+</html>
