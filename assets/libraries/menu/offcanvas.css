@@ -1,0 +1,151 @@
+﻿
+.navbar-brand{
+    margin-left: var(--space-xxl);
+}
+
+.offcanvas-end {
+    position: relative;
+    display: flex;
+}
+
+@media (min-width : 992px) {
+    .offcanvas {
+        visibility: visible;
+        position: relative;
+        background: none;
+        border: none;
+        justify-content: end;
+    }
+
+    .dropdown-toggle::after{
+        display:none;
+    }
+
+    .navbar-expand-lg .navbar-nav {
+        width: 100%;
+    }
+
+    
+
+    .navbar-expand-lg .offcanvas {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .navbar-expand-lg .offcanvas .offcanvas-body{
+        width: 100%;
+        align-items:center;
+    }
+
+    .navbar-expand-lg .navbar-nav .nav-link{
+        margin-left: var(--space-base) !important;
+        margin-right: var(--space-none) !important;
+    }
+
+    .mini-userprofile, .offcanvas-footer {
+        display: none !important;
+    }
+}
+
+@media (max-width : 992px) {
+    .offcanvas {
+        width: 275px !important;
+        background-color: var(--color-neutral-0);
+    }
+
+    .offcanvas-start-lg {
+        top: 0;
+        left: 0;
+        border-right: 1px solid rgba(0, 0, 0, .2);
+        transform: translateX(-100%);
+    }
+
+    .topuserprofile{
+        display:none;
+    }
+
+    .offcanvas-header {
+        display:flex;
+        flex-direction:row;
+        align-items:center;
+        padding: var(--space-none);
+        height: var(--header-size);
+        background-color: var(--color-primary);
+        padding: var(--space-none) var(--space-base);
+    }
+
+    .offcanvas-header img{
+        max-height: 40px;
+    }
+
+    .offcanvas-header .offcanvas-title{
+        width:100%;
+    }
+
+    .offcanvas-header .offcanvas-close{
+        position: relative;
+        display: flex;
+        align-items: center;
+        color: var(--color-neutral-0);
+        width: 40px;
+        height:40px;
+    }
+
+    .offcanvas-header .offcanvas-close i{
+        font-size:30px;
+    }
+
+    .offcanvas-body .navbar-nav .nav-item a {
+        color: var(--color-primary);
+        height: 48px;
+    }
+
+}
+
+
+.navbar-toggler {
+    background-color: transparent !important;
+    color: var(--color-neutral-0) !important;
+    border: 1px transparent none !important;
+    height: 48px !important;
+}
+
+.navbar-toggler:focus{
+    box-shadow:none !important;
+}
+
+.navbar-toggler i{
+    font-size:32px;
+}
+
+.offcanvas-footer{
+    position: relative;
+    display:flex;
+    flex-direction:column;
+    padding:var(--space-base);
+
+}
+
+.offcanvas-footer a{
+    position:relative;
+    display:inline-flex;
+    vertical-align:central;
+    border-bottom: 1px solid var(--color-neutral-4);
+    padding-bottom: var(--space-s);
+    margin-bottom: var(--space-s);
+    color: var(--color-error) !important;
+}
+
+.offcanvas-footer a i{
+    font-size:20px;
+    margin-left: var(--space-s);
+}
+
+.offcanvas-footer .mobile-copyrights{
+    position: relative;
+    display:block;
+    font-size:60%;
+    color: var(--color-neutral-6);
+}
+
+
